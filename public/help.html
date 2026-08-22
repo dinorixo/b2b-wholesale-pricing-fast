@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Help & Tutorials — B2B Wholesale Pricing Fast</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+background:#f6f6f7;
+color:#202223;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif
+}
+
+.top{
+height:64px;
+background:#fff;
+border-bottom:1px solid #e1e3e5;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 28px;
+position:sticky;
+top:0;
+z-index:10
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:650
+}
+
+.logo{
+width:34px;
+height:34px;
+border-radius:9px;
+background:#008060;
+color:white;
+display:grid;
+place-items:center;
+font-weight:800
+}
+
+.nav{
+display:flex;
+gap:7px
+}
+
+.nav button{
+border:1px solid #c9cccf;
+background:white;
+padding:8px 13px;
+border-radius:8px;
+cursor:pointer;
+font-weight:600
+}
+
+.nav button:hover{
+background:#f1f2f3
+}
+
+.page{
+max-width:1050px;
+margin:auto;
+padding:35px 22px 60px
+}
+
+.hero{
+margin-bottom:25px
+}
+
+.hero h1{
+margin:0 0 8px;
+font-size:29px
+}
+
+.hero p{
+margin:0;
+color:#6d7175;
+font-size:14px
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px
+}
+
+.card{
+background:white;
+border:1px solid #e1e3e5;
+border-radius:12px;
+overflow:hidden
+}
+
+.card-head{
+padding:20px
+}
+
+.icon{
+font-size:25px;
+margin-bottom:10px
+}
+
+.card h2{
+font-size:17px;
+margin:0 0 7px
+}
+
+.card p{
+color:#6d7175;
+font-size:14px;
+line-height:1.5;
+margin:0
+}
+
+.learn{
+border-top:1px solid #e1e3e5;
+width:100%;
+padding:14px 20px;
+background:white;
+border-left:0;
+border-right:0;
+border-bottom:0;
+text-align:left;
+font-weight:650;
+cursor:pointer
+}
+
+.learn:hover{
+background:#f6f6f7
+}
+
+.content{
+display:none;
+padding:0 20px 20px;
+color:#6d7175;
+font-size:14px;
+line-height:1.6
+}
+
+.content.open{
+display:block
+}
+
+.content ol,
+.content ul{
+padding-left:20px
+}
+
+.tip{
+margin-top:12px;
+padding:12px;
+background:#e7f5ef;
+border-radius:8px;
+color:#006e52;
+font-size:13px
+}
+
+@media(max-width:700px){
+.grid{
+grid-template-columns:1fr
+}
+
+.top{
+padding:0 14px
+}
+
+.brand span{
+display:none
+}
+
+.nav button:nth-child(n+2){
+display:none
+}
+}
+</style>
+</head>
+
+<body>
+
+<header class="top">
+
+<div class="brand">
+<div class="logo">B</div>
+<span>B2B Wholesale Pricing Fast</span>
+</div>
+
+<div class="nav">
+<button onclick="location.href='/'">Dashboard</button>
+<button onclick="location.href='/products.html'">Pricing Rules</button>
+</div>
+
+</header>
+
+<main class="page">
+
+<section class="hero">
+<h1>Help & Tutorials</h1>
+<p>Everything you need to configure wholesale pricing for your Shopify store.</p>
+</section>
+
+<section class="grid">
+
+<div class="card">
+<div class="card-head">
+<div class="icon">🚀</div>
+<h2>Getting Started</h2>
+<p>Learn the basic setup process.</p>
+</div>
+
+<button class="learn" onclick="toggle(this)">
+How do I get started?
+</button>
+
+<div class="content">
+<ol>
+<li>Open <b>Pricing Rules</b>.</li>
+<li>Create a new pricing rule.</li>
+<li>Choose your customer group.</li>
+<li>Set the minimum quantity.</li>
+<li>Set the discount.</li>
+<li>Save and activate the rule.</li>
+</ol>
+
+<div class="tip">
+Tip: Start with one simple rule before creating multiple pricing tiers.
+</div>
+</div>
+</div>
+
+
+<div class="card">
+<div class="card-head">
+<div class="icon">💰</div>
+<h2>Pricing Rules</h2>
+<p>Create quantity-based wholesale discounts.</p>
+</div>
+
+<button class="learn" onclick="toggle(this)">
+How do pricing tiers work?
+</button>
+
+<div class="content">
+<p>
+A pricing tier defines the quantity a customer must purchase
+to receive a discount.
+</p>
+
+<ul>
+<li>50+ units → 15% discount</li>
+<li>200+ units → 30% discount</li>
+<li>500+ units → 40% discount</li>
+</ul>
+
+<p>
+You can create multiple tiers for different customer groups.
+</p>
+</div>
+</div>
+
+
+<div class="card">
+<div class="card-head">
+<div class="icon">👥</div>
+<h2>Customer Groups</h2>
+<p>Organize customers by wholesale level.</p>
+</div>
+
+<button class="learn" onclick="toggle(this)">
+How should I use customer groups?
+</button>
+
+<div class="content">
+<p>
+Customer groups allow you to give different pricing to different
+types of customers.
+</p>
+
+<ul>
+<li>Wholesale</li>
+<li>Enterprise</li>
+<li>VIP customers</li>
+</ul>
+
+<p>
+Create separate rules when different groups need different discounts.
+</p>
+</div>
+</div>
+
+
+<div class="card">
+<div class="card-head">
+<div class="icon">📦</div>
+<h2>Products</h2>
+<p>Control which products receive wholesale pricing.</p>
+</div>
+
+<button class="learn" onclick="toggle(this)">
+How do I apply a rule to products?
+</button>
+
+<div class="content">
+<p>
+When creating a rule, choose whether it applies to:
+</p>
+
+<ul>
+<li>All products</li>
+<li>Selected products</li>
+<li>Specific product groups</li>
+</ul>
+
+<p>
+This lets you keep regular retail pricing on products that shouldn't
+receive wholesale discounts.
+</p>
+</div>
+</div>
+
+
+<div class="card">
+<div class="card-head">
+<div class="icon">📊</div>
+<h2>Analytics</h2>
+<p>Monitor how your wholesale pricing performs.</p>
+</div>
+
+<button class="learn" onclick="toggle(this)">
+What should I look at?
+</button>
+
+<div class="content">
+<p>
+Use analytics to monitor wholesale activity and understand which
+pricing rules are being used.
+</p>
+
+<ul>
+<li>Wholesale orders</li>
+<li>Customer activity</li>
+<li>Rule performance</li>
+<li>Sales trends</li>
+</ul>
+</div>
+</div>
+
+
+<div class="card">
+<div class="card-head">
+<div class="icon">❓</div>
+<h2>Troubleshooting</h2>
+<p>Quick fixes for common problems.</p>
+</div>
+
+<button class="learn" onclick="toggle(this)">
+My pricing rule isn't working.
+</button>
+
+<div class="content">
+<ol>
+<li>Check that the rule is active.</li>
+<li>Check the minimum quantity.</li>
+<li>Check that the product is included.</li>
+<li>Check that the customer belongs to the correct group.</li>
+<li>Refresh the Shopify storefront and test again.</li>
+</ol>
+
+<div class="tip">
+If the problem continues, check the browser console and server logs.
+</div>
+</div>
+</div>
+
+</section>
+
+</main>
+
+<script>
+function toggle(button){
+
+const content=button.nextElementSibling;
+
+document.querySelectorAll(".content").forEach(function(item){
+
+if(item!==content){
+item.classList.remove("open");
+}
+
+});
+
+content.classList.toggle("open");
+}
+</script>
+
+</body>
+</html>
