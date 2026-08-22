@@ -228,7 +228,24 @@ margin-bottom:12px;
 .top-actions .btn:not(.primary){display:none}
 }
 </style>
-<script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"></script></head>
+<script src="https://cdn.shopify.com/shopifycloud/app-bridge.js"></script>
+<script>
+(function(){
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const host = params.get("host");
+
+    if (!host) return;
+
+    window.B2B_SHOPIFY_HOST = host;
+
+    console.log("Shopify embedded app host detected.");
+  } catch(e) {
+    console.error("Shopify initialization failed:", e);
+  }
+})();
+</script>
+</head>
 
 <body>
 
