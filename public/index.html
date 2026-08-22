@@ -571,5 +571,29 @@ box-shadow:0 3px 12px rgba(0,0,0,.15);
 
 })();
 </script>
+
+<script>
+(function () {
+  if (!window.shopify) {
+    console.error("Shopify App Bridge is not available.");
+    return;
+  }
+
+  window.b2bShopifyFetch = async function (url, options = {}) {
+    const idToken = await window.shopify.idToken();
+
+    const headers = new Headers(options.headers || {});
+    headers.set("Authorization", "Bearer " + idToken);
+    headers.set("Content-Type", "application/json");
+
+    return fetch(url, {
+      ...options,
+      headers
+    });
+  };
+
+  console.log("B2B Shopify authentication ready.");
+})();
+</script>
 </body>
 </html>
