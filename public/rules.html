@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B2B Wholesale Pricing Fast — Rules</title>
+
+<style>
+:root{
+--bg:#f6f7f8;--card:#fff;--text:#202223;--muted:#6d7175;
+--border:#e1e3e5;--primary:#008060;--soft:#e7f5ef;--danger:#d72c0d;
+}
+[data-theme="dark"]{
+--bg:#101312;--card:#181c1a;--text:#f1f3f2;--muted:#a6ada9;
+--border:#303633;--primary:#35b98a;--soft:#17382d;--danger:#ff6b52;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+button,input,select{font:inherit}
+.header{
+height:64px;background:var(--card);border-bottom:1px solid var(--border);
+display:flex;align-items:center;justify-content:space-between;padding:0 18px;
+position:sticky;top:0;z-index:20
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.logo{
+width:36px;height:36px;border-radius:9px;background:var(--primary);
+color:#fff;display:grid;place-items:center;font-weight:800
+}
+.brand span{color:var(--primary)}
+.right{display:flex;align-items:center;gap:7px}
+.icon{
+width:38px;height:38px;border:0;background:transparent;color:var(--text);
+border-radius:8px;cursor:pointer
+}
+.store{
+border:1px solid var(--border);background:var(--card);color:var(--text);
+border-radius:9px;padding:4px 7px 4px 12px;display:flex;align-items:center;gap:8px
+}
+.avatar{
+width:30px;height:30px;border-radius:8px;background:var(--primary);
+color:#fff;display:grid;place-items:center;font-weight:bold
+}
+.sidebar{
+width:230px;position:fixed;top:64px;bottom:0;background:var(--card);
+border-right:1px solid var(--border);padding:18px 12px
+}
+.label{
+font-size:10px;font-weight:bold;letter-spacing:1px;color:var(--muted);
+padding:12px 10px 7px
+}
+.nav{
+width:100%;border:0;background:transparent;color:var(--muted);
+text-align:left;padding:10px;border-radius:8px;cursor:pointer;margin-bottom:3px
+}
+.nav.active{background:var(--soft);color:var(--primary);font-weight:bold}
+.main{margin-left:230px;padding:28px}
+.container{max-width:1100px;margin:auto}
+.top{
+display:flex;justify-content:space-between;align-items:end;gap:15px;margin-bottom:24px
+}
+.eyebrow{
+font-size:10px;font-weight:bold;letter-spacing:1px;color:var(--primary);margin-bottom:7px
+}
+h1{margin:0;font-size:28px}
+.subtitle{margin-top:7px;font-size:13px;color:var(--muted)}
+.btn{
+border:1px solid var(--border);background:var(--card);color:var(--text);
+padding:10px 14px;border-radius:8px;font-weight:bold;cursor:pointer
+}
+.primary{background:var(--primary);border-color:var(--primary);color:#fff}
+.layout{display:grid;grid-template-columns:1.5fr .8fr;gap:18px}
+.panel{
+background:var(--card);border:1px solid var(--border);
+border-radius:11px;overflow:hidden;margin-bottom:18px
+}
+.panel-head{padding:17px;border-bottom:1px solid var(--border)}
+.panel-title{font-weight:bold;font-size:15px}
+.panel-sub{font-size:11px;color:var(--muted);margin-top:5px}
+.body{padding:18px}
+.rule-box{
+border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px
+}
+.rule-label{
+font-size:10px;font-weight:bold;letter-spacing:.8px;color:var(--primary);
+margin-bottom:10px
+}
+.row{
+display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px
+}
+.field label{
+display:block;font-size:10px;font-weight:bold;color:var(--muted);margin-bottom:6px
+}
+.field input,.field select{
+width:100%;padding:10px;border:1px solid var(--border);border-radius:7px;
+background:var(--card);color:var(--text);outline:none
+}
+.condition{
+display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:8px;align-items:end;
+padding:12px 0;border-bottom:1px solid var(--border)
+}
+.condition:last-child{border-bottom:0}
+.remove{
+width:35px;height:35px;border:1px solid var(--border);
+background:var(--card);color:var(--danger);border-radius:7px;cursor:pointer
+}
+.logic{
+display:flex;align-items:center;gap:8px;margin:10px 0;color:var(--muted);font-size:11px
+}
+.logic-line{height:1px;background:var(--border);flex:1}
+.result{
+background:var(--soft);border-radius:9px;padding:15px;
+font-size:12px;line-height:1.7;color:var(--primary)
+}
+.rule-list{
+display:flex;flex-direction:column
+}
+.saved{
+padding:16px;border-bottom:1px solid var(--border)
+}
+.saved:last-child{border-bottom:0}
+.saved-top{
+display:flex;justify-content:space-between;gap:10px;align-items:center
+}
+.saved-name{font-size:14px;font-weight:bold}
+.badge{
+padding:5px 8px;border-radius:20px;background:var(--soft);
+color:var(--primary);font-size:10px;font-weight:bold
+}
+.saved-text{font-size:11px;color:var(--muted);margin-top:8px}
+.saved-actions{display:flex;gap:6px;margin-top:10px}
+.small{
+border:1px solid var(--border);background:var(--card);color:var(--text);
+padding:7px 9px;border-radius:7px;cursor:pointer;font-size:11px
+}
+.note{
+padding:12px;background:var(--soft);color:var(--primary);
+font-size:11px;line-height:1.5;border-radius:8px
+}
+.mobile{display:none}
+@media(max-width:800px){
+.sidebar{display:none}
+.main{margin-left:0;padding:20px 14px 85px}
+.layout{grid-template-columns:1fr}
+.top{display:block}
+.top .btn{margin-top:15px;width:100%}
+.condition{grid-template-columns:1fr 1fr}
+.condition .remove{grid-column:2;justify-self:end}
+.mobile{
+position:fixed;display:flex;left:0;right:0;bottom:0;height:64px;
+background:var(--card);border-top:1px solid var(--border);z-index:30;
+justify-content:space-around
+}
+.mobile button{border:0;background:transparent;color:var(--muted);font-size:10px}
+.mobile .active{color:var(--primary);font-weight:bold}
+}
+@media(max-width:480px){
+.brand{font-size:12px}
+.store span{display:none}
+.row{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+<div class="brand">
+<div class="logo">BF</div>
+<div>B2B Wholesale Pricing <span>Fast</span></div>
+</div>
+
+<div class="right">
+<button class="icon" id="theme" onclick="toggleTheme()">☾</button>
+<button class="icon">🔔</button>
+<div class="store">
+<span>My Store</span>
+<div class="avatar">M</div>
+</div>
+</div>
+</header>
+
+<aside class="sidebar">
+
+<div class="label">OVERVIEW</div>
+<button class="nav" onclick="location.href='index.html'">⌂ &nbsp; Dashboard</button>
+
+<div class="label">COMMERCE</div>
+<button class="nav active">◇ &nbsp; Pricing Rules</button>
+<button class="nav" onclick="location.href='customers.html'">♙ &nbsp; Customer Groups</button>
+<button class="nav" onclick="location.href='products.html'">▣ &nbsp; Products</button>
+<button class="nav" onclick="location.href='pricelists.html'">▤ &nbsp; Price Lists</button>
+
+<div class="label">INSIGHTS</div>
+<button class="nav">◒ &nbsp; Analytics</button>
+
+<div class="label">SYSTEM</div>
+<button class="nav">⚙ &nbsp; Settings</button>
+
+</aside>
+
+<main class="main">
+
+<div class="container">
+
+<div class="top">
+<div>
+<div class="eyebrow">AUTOMATION</div>
+<h1>Pricing Rules</h1>
+<div class="subtitle">
+Build automatic wholesale pricing rules without writing code.
+</div>
+</div>
+
+<button class="btn primary" onclick="saveRule()">
+Save rule
+</button>
+</div>
+
+
+<div class="layout">
+
+<div>
+
+<div class="panel">
+
+<div class="panel-head">
+<div class="panel-title">Rule builder</div>
+<div class="panel-sub">
+Create an IF → AND → THEN pricing rule.
+</div>
+</div>
+
+<div class="body">
+
+<div class="rule-box">
+
+<div class="rule-label">RULE NAME</div>
+
+<div class="field">
+<input id="ruleName" value="VIP Volume Discount">
+</div>
+
+</div>
+
+
+<div class="rule-box">
+
+<div class="rule-label">IF</div>
+
+<div class="row">
+
+<div class="field">
+<label>Customer group</label>
+
+<select id="customerGroup">
+<option value="wholesale">Wholesale</option>
+<option value="wholesale_vip">VIP Distributor</option>
+<option value="enterprise">Enterprise</option>
+</select>
+</div>
+
+<div class="field">
+<label>Product scope</label>
+
+<select id="productScope">
+<option value="selected">Selected products</option>
+<option value="all">All products</option>
+</select>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="rule-box">
+
+<div class="rule-label">AND CONDITIONS</div>
+
+<div id="conditions"></div>
+
+<button class="btn" onclick="addCondition()">
++ Add condition
+</button>
+
+</div>
+
+
+<div class="rule-box">
+
+<div class="rule-label">THEN</div>
+
+<div class="row">
+
+<div class="field">
+<label>Action</label>
+
+<select id="action">
+<option value="percentage">Percentage discount</option>
+<option value="fixed">Fixed price</option>
+</select>
+
+</div>
+
+<div class="field">
+<label>Value</label>
+
+<input
+id="value"
+type="number"
+step="0.01"
+value="27.5">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="result">
+
+<strong>Preview</strong><br>
+
+IF customer belongs to
+<strong id="previewGroup">Wholesale</strong>
+
+AND the cart meets the configured conditions,
+
+THEN apply
+<strong id="previewValue">27.5%</strong>
+discount.
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<div class="panel-head">
+<div class="panel-title">Saved rules</div>
+<div class="panel-sub">
+Rules currently configured in this store.
+</div>
+</div>
+
+<div class="rule-list" id="savedRules"></div>
+
+</div>
+
+</div>
+
+
+<div>
+
+<div class="panel">
+
+<div class="panel-head">
+<div class="panel-title">Rule status</div>
+</div>
+
+<div class="body">
+
+<div class="result">
+● Draft rule ready
+</div>
+
+<br>
+
+<div class="note">
+The current version is a UI prototype. Later, these rules will be converted into Shopify Function input and executed by Shopify's checkout infrastructure.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<nav class="mobile">
+
+<button onclick="location.href='index.html'">⌂<br>Home</button>
+<button class="active">◇<br>Pricing</button>
+<button onclick="location.href='customers.html'">♙<br>Customers</button>
+<button onclick="location.href='products.html'">▣<br>Products</button>
+<button>⚙<br>Settings</button>
+
+</nav>
+
+
+<script>
+
+let conditions=[
+{
+field:"quantity",
+operator:"greater",
+value:"50"
+}
+];
+
+let savedRules=JSON.parse(
+localStorage.getItem("b2b_rules") || "[]"
+);
+
+
+function renderConditions(){
+
+document.getElementById("conditions").innerHTML=
+conditions.map((condition,index)=>`
+
+<div class="condition">
+
+<div class="field">
+<label>Condition</label>
+<select onchange="conditions[${index}].field=this.value">
+<option value="quantity" ${condition.field==="quantity"?"selected":""}>
+Cart quantity
+</option>
+<option value="weight" ${condition.field==="weight"?"selected":""}>
+Cart weight
+</option>
+<option value="subtotal" ${condition.field==="subtotal"?"selected":""}>
+Cart subtotal
+</option>
+</select>
+</div>
+
+<div class="field">
+<label>Operator</label>
+<select onchange="conditions[${index}].operator=this.value">
+<option value="greater" ${condition.operator==="greater"?"selected":""}>
+Greater than
+</option>
+<option value="greater_equal" ${condition.operator==="greater_equal"?"selected":""}>
+Greater or equal
+</option>
+<option value="equal" ${condition.operator==="equal"?"selected":""}>
+Equals
+</option>
+<option value="less" ${condition.operator==="less"?"selected":""}>
+Less than
+</option>
+</select>
+</div>
+
+<div class="field">
+<label>Value</label>
+<input
+type="number"
+value="${condition.value}"
+oninput="conditions[${index}].value=this.value">
+</div>
+
+<button class="remove" onclick="removeCondition(${index})">
+×
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+
+function addCondition(){
+
+conditions.push({
+field:"quantity",
+operator:"greater",
+value:"100"
+});
+
+renderConditions();
+
+}
+
+
+function removeCondition(index){
+
+if(conditions.length===1){
+
+alert("Keep at least one condition.");
+
+return;
+
+}
+
+conditions.splice(index,1);
+
+renderConditions();
+
+}
+
+
+function saveRule(){
+
+const name=
+document.getElementById("ruleName")
+.value.trim();
+
+if(!name){
+
+alert("Enter a rule name.");
+
+return;
+
+}
+
+const rule={
+id:Date.now(),
+name:name,
+group:document.getElementById("customerGroup").value,
+scope:document.getElementById("productScope").value,
+conditions:conditions,
+action:document.getElementById("action").value,
+value:document.getElementById("value").value,
+active:true
+};
+
+savedRules.unshift(rule);
+
+localStorage.setItem(
+"b2b_rules",
+JSON.stringify(savedRules)
+);
+
+renderSavedRules();
+
+alert("Pricing rule saved.");
+
+}
+
+
+function renderSavedRules(){
+
+const box=document.getElementById("savedRules");
+
+if(!savedRules.length){
+
+box.innerHTML=`
+<div style="padding:25px;color:var(--muted);font-size:12px">
+No saved rules yet.
+</div>`;
+
+return;
+
+}
+
+box.innerHTML=savedRules.map(rule=>`
+
+<div class="saved">
+
+<div class="saved-top">
+
+<div class="saved-name">
+${escapeText(rule.name)}
+</div>
+
+<div class="badge">
+${rule.active?"Active":"Paused"}
+</div>
+
+</div>
+
+<div class="saved-text">
+
+Customer group:
+<strong>${escapeText(rule.group)}</strong>
+<br>
+
+${rule.conditions.length} condition(s)
+<br>
+
+Action:
+<strong>
+${rule.action==="percentage"
+?rule.value+"% discount"
+:"Fixed price"}
+</strong>
+
+</div>
+
+<div class="saved-actions">
+
+<button class="small" onclick="deleteRule(${rule.id})">
+Delete
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+}
+
+
+function deleteRule(id){
+
+savedRules=
+savedRules.filter(rule=>rule.id!==id);
+
+localStorage.setItem(
+"b2b_rules",
+JSON.stringify(savedRules)
+);
+
+renderSavedRules();
+
+}
+
+
+function updatePreview(){
+
+const select=
+document.getElementById("customerGroup");
+
+const text=
+select.options[select.selectedIndex].text;
+
+document.getElementById("previewGroup")
+.textContent=text;
+
+const action=
+document.getElementById("action").value;
+
+const value=
+document.getElementById("value").value;
+
+document.getElementById("previewValue")
+.textContent=
+action==="percentage"
+?value+"%"
+:"$"+value;
+
+}
+
+
+document.getElementById("customerGroup")
+.addEventListener("change",updatePreview);
+
+document.getElementById("action")
+.addEventListener("change",updatePreview);
+
+document.getElementById("value")
+.addEventListener("input",updatePreview);
+
+
+function escapeText(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function toggleTheme(){
+
+const html=document.documentElement;
+
+const dark=
+html.getAttribute("data-theme")==="dark";
+
+if(dark){
+
+html.removeAttribute("data-theme");
+localStorage.setItem("b2b_theme","light");
+document.getElementById("theme").textContent="☾";
+
+}else{
+
+html.setAttribute("data-theme","dark");
+localStorage.setItem("b2b_theme","dark");
+document.getElementById("theme").textContent="☀";
+
+}
+
+}
+
+
+if(localStorage.getItem("b2b_theme")==="dark"){
+
+document.documentElement.setAttribute("data-theme","dark");
+document.getElementById("theme").textContent="☀";
+
+}
+
+renderConditions();
+renderSavedRules();
+updatePreview();
+
+</script>
+
+</body>
+</html>

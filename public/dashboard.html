@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B2B Wholesale Pricing Fast — Dashboard</title>
+
+<style>
+body {
+  margin: 0;
+  background: #080b12;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+header {
+  height: 70px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #252d3a;
+}
+
+.logo {
+  font-weight: 800;
+}
+
+button {
+  border: 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+main {
+  padding: 30px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.hero {
+  background: #111722;
+  border: 1px solid #252d3a;
+  border-radius: 16px;
+  padding: 25px;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 7px 11px;
+  border-radius: 20px;
+  background: #1b2432;
+  color: #b8c0cd;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.box {
+  background: #111722;
+  border: 1px solid #252d3a;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.value {
+  font-size: 24px;
+  font-weight: 800;
+  margin-top: 8px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    B2B Wholesale Pricing Fast
+  </div>
+
+  <button onclick="logout()">
+    Logout
+  </button>
+
+</header>
+
+<main>
+
+  <div class="hero">
+
+    <h1 id="welcome">
+      Welcome
+    </h1>
+
+    <p id="email"></p>
+
+    <div
+      id="status"
+      class="status">
+    </div>
+
+  </div>
+
+  <div class="grid">
+
+    <div class="box">
+      <div>Plan</div>
+      <div
+        id="plan"
+        class="value">
+      </div>
+    </div>
+
+    <div class="box">
+      <div>Subscription</div>
+      <div
+        id="subscription"
+        class="value">
+      </div>
+    </div>
+
+    <div class="box">
+      <div>Store</div>
+      <div
+        id="store"
+        class="value">
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<script>
+
+async function loadAccount() {
+
+  const token =
+    localStorage.getItem("b2b_token");
+
+  if (!token) {
+    window.location.href =
+      "/auth.html";
+    return;
+  }
+
+  try {
+
+    const response =
+      await fetch(
+        "/api/auth/me",
+        {
+          headers: {
+            Authorization:
+              "Bearer " + token
+          }
+        }
+      );
+
+    const data =
+      await response.json();
+
+    if (!response.ok) {
+
+      localStorage.clear();
+
+      window.location.href =
+        "/auth.html";
+
+      return;
+    }
+
+    document.getElementById(
+      "welcome"
+    ).textContent =
+      "Welcome, " +
+      data.user.name;
+
+    document.getElementById(
+      "email"
+    ).textContent =
+      data.user.email;
+
+    document.getElementById(
+      "plan"
+    ).textContent =
+      data.shop.plan;
+
+    document.getElementById(
+      "subscription"
+    ).textContent =
+      data.shop.subscriptionStatus;
+
+    document.getElementById(
+      "store"
+    ).textContent =
+      data.shop.shopDomain;
+
+    document.getElementById(
+      "status"
+    ).textContent =
+      "14-day Premium trial active";
+
+  } catch {
+
+    window.location.href =
+      "/auth.html";
+
+  }
+
+}
+
+
+async function logout() {
+
+  const token =
+    localStorage.getItem("b2b_token");
+
+  if (token) {
+
+    await fetch(
+      "/api/auth/logout",
+      {
+        method: "POST",
+        headers: {
+          Authorization:
+            "Bearer " + token
+        }
+      }
+    );
+
+  }
+
+  localStorage.clear();
+
+  window.location.href =
+    "/auth.html";
+}
+
+
+loadAccount();
+
+</script>
+
+</body>
+</html>

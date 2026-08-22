@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B2B Wholesale Pricing Fast — Settings</title>
+
+<style>
+:root{
+--bg:#f6f7f8;--card:#fff;--text:#202223;--muted:#6d7175;
+--border:#e1e3e5;--primary:#008060;--soft:#e7f5ef;--danger:#d72c0d
+}
+[data-theme="dark"]{
+--bg:#101312;--card:#181c1a;--text:#f1f3f2;--muted:#a6ada9;
+--border:#303633;--primary:#35b98a;--soft:#17382d;--danger:#ff6b52
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+button,input,select{font:inherit}
+
+.header{
+height:64px;background:var(--card);border-bottom:1px solid var(--border);
+display:flex;align-items:center;justify-content:space-between;
+padding:0 18px;position:sticky;top:0;z-index:20
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.logo{
+width:36px;height:36px;border-radius:9px;background:var(--primary);
+color:#fff;display:grid;place-items:center;font-weight:800
+}
+.brand span{color:var(--primary)}
+.right{display:flex;align-items:center;gap:7px}
+.icon{
+width:38px;height:38px;border:0;background:transparent;
+color:var(--text);border-radius:8px;cursor:pointer
+}
+.store{
+border:1px solid var(--border);background:var(--card);color:var(--text);
+border-radius:9px;padding:4px 7px 4px 12px;display:flex;
+align-items:center;gap:8px
+}
+.avatar{
+width:30px;height:30px;border-radius:8px;background:var(--primary);
+color:#fff;display:grid;place-items:center;font-weight:bold
+}
+
+.sidebar{
+width:230px;position:fixed;top:64px;bottom:0;background:var(--card);
+border-right:1px solid var(--border);padding:18px 12px
+}
+.label{
+font-size:10px;font-weight:bold;letter-spacing:1px;
+color:var(--muted);padding:12px 10px 7px
+}
+.nav{
+width:100%;border:0;background:transparent;color:var(--muted);
+text-align:left;padding:10px;border-radius:8px;cursor:pointer;margin-bottom:3px
+}
+.nav.active{background:var(--soft);color:var(--primary);font-weight:bold}
+
+.main{margin-left:230px;padding:28px}
+.container{max-width:950px;margin:auto}
+
+.eyebrow{
+font-size:10px;font-weight:bold;letter-spacing:1px;
+color:var(--primary);margin-bottom:7px
+}
+h1{margin:0;font-size:28px}
+.subtitle{margin-top:7px;font-size:13px;color:var(--muted)}
+
+.tabs{
+display:flex;gap:4px;margin:25px 0 15px;
+border-bottom:1px solid var(--border);overflow:auto
+}
+.tab{
+border:0;background:transparent;color:var(--muted);
+padding:11px 14px;cursor:pointer;white-space:nowrap
+}
+.tab.active{
+color:var(--primary);
+font-weight:bold;
+border-bottom:2px solid var(--primary)
+}
+
+.panel{
+background:var(--card);border:1px solid var(--border);
+border-radius:12px;margin-bottom:15px;overflow:hidden
+}
+.panel-head{
+padding:18px;border-bottom:1px solid var(--border)
+}
+.panel-title{font-size:15px;font-weight:bold}
+.panel-desc{font-size:11px;color:var(--muted);margin-top:5px}
+
+.field{
+padding:16px 18px;border-bottom:1px solid var(--border)
+}
+.field:last-child{border-bottom:0}
+.field label{
+display:block;font-size:10px;font-weight:bold;
+color:var(--muted);margin-bottom:7px
+}
+.field input,.field select{
+width:100%;max-width:500px;padding:11px;
+border:1px solid var(--border);border-radius:8px;
+background:var(--card);color:var(--text);outline:none
+}
+.help{font-size:10px;color:var(--muted);margin-top:6px}
+
+.row{
+display:flex;align-items:center;justify-content:space-between;
+gap:20px
+}
+
+.switch{
+width:42px;height:24px;border:0;border-radius:20px;
+background:#b5b8ba;padding:3px;cursor:pointer;flex-shrink:0
+}
+.switch span{
+display:block;width:18px;height:18px;background:#fff;
+border-radius:50%;transition:.2s
+}
+.switch.on{background:var(--primary)}
+.switch.on span{transform:translateX(18px)}
+
+.account{
+display:flex;align-items:center;gap:12px
+}
+.big-avatar{
+width:48px;height:48px;border-radius:12px;background:var(--primary);
+color:#fff;display:grid;place-items:center;font-weight:bold;font-size:18px
+}
+
+.actions{
+display:flex;justify-content:flex-end;gap:8px;margin-top:15px
+}
+.btn{
+border:1px solid var(--border);background:var(--card);
+color:var(--text);padding:10px 14px;border-radius:8px;
+font-weight:bold;cursor:pointer
+}
+.primary{
+background:var(--primary);border-color:var(--primary);color:#fff
+}
+.danger{
+color:var(--danger)
+}
+
+.notice{
+padding:13px;background:var(--soft);border-radius:9px;
+font-size:11px;line-height:1.5;margin-top:15px
+}
+
+@media(max-width:800px){
+.sidebar{display:none}
+.main{margin-left:0;padding:20px 14px 80px}
+.brand{font-size:12px}
+.store span{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="brand">
+<div class="logo">BF</div>
+<div>B2B Wholesale Pricing <span>Fast</span></div>
+</div>
+
+<div class="right">
+<button class="icon" id="theme" onclick="toggleTheme()">☾</button>
+<button class="icon">🔔</button>
+
+<div class="store">
+<span>My Store</span>
+<div class="avatar">M</div>
+</div>
+</div>
+
+</header>
+
+
+<aside class="sidebar">
+
+<div class="label">OVERVIEW</div>
+
+<button class="nav" onclick="location.href='index.html'">
+⌂ &nbsp; Dashboard
+</button>
+
+<div class="label">COMMERCE</div>
+
+<button class="nav" onclick="location.href='rules.html'">
+◇ &nbsp; Pricing Rules
+</button>
+
+<button class="nav" onclick="location.href='customers.html'">
+♙ &nbsp; Customer Groups
+</button>
+
+<button class="nav" onclick="location.href='products.html'">
+▣ &nbsp; Products
+</button>
+
+<button class="nav" onclick="location.href='pricelists.html'">
+▤ &nbsp; Price Lists
+</button>
+
+<button class="nav" onclick="location.href='moq.html'">
+⊙ &nbsp; MOQ & Checkout
+</button>
+
+<div class="label">INSIGHTS</div>
+
+<button class="nav" onclick="location.href='analytics.html'">
+◒ &nbsp; Analytics
+</button>
+
+<div class="label">SYSTEM</div>
+
+<button class="nav active">
+⚙ &nbsp; Settings
+</button>
+
+</aside>
+
+
+<main class="main">
+
+<div class="container">
+
+<div class="eyebrow">SYSTEM CONFIGURATION</div>
+
+<h1>Settings</h1>
+
+<div class="subtitle">
+Manage your store connection, wholesale behavior and app preferences.
+</div>
+
+
+<div class="tabs">
+
+<button class="tab active" onclick="showTab('general',this)">
+General
+</button>
+
+<button class="tab" onclick="showTab('wholesale',this)">
+Wholesale
+</button>
+
+<button class="tab" onclick="showTab('notifications',this)">
+Notifications
+</button>
+
+<button class="tab" onclick="showTab('account',this)">
+Account
+</button>
+
+</div>
+
+
+<!-- GENERAL -->
+
+<section id="general" class="tab-content">
+
+<div class="panel">
+
+<div class="panel-head">
+<div class="panel-title">Store configuration</div>
+<div class="panel-desc">
+Basic configuration for your wholesale pricing engine.
+</div>
+</div>
+
+<div class="field">
+
+<label>STORE NAME</label>
+
+<input id="storeName" value="My Store">
+
+<div class="help">
+The store name displayed inside the app.
+</div>
+
+</div>
+
+<div class="field">
+
+<label>DEFAULT CURRENCY</label>
+
+<select id="currency">
+<option>USD — US Dollar</option>
+<option>INR — Indian Rupee</option>
+<option>EUR — Euro</option>
+<option>GBP — British Pound</option>
+</select>
+
+</div>
+
+<div class="field">
+
+<div class="row">
+
+<div>
+<strong style="font-size:12px">Enable wholesale pricing</strong>
+<div class="help">
+Allow the app to process wholesale pricing rules.
+</div>
+</div>
+
+<button class="switch on" id="wholesaleEnabled"
+onclick="toggleSwitch(this)">
+<span></span>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- WHOLESALE -->
+
+<section id="wholesale" class="tab-content" style="display:none">
+
+<div class="panel">
+
+<div class="panel-head">
+<div class="panel-title">Wholesale behavior</div>
+<div class="panel-desc">
+Default behavior for B2B customers.
+</div>
+</div>
+
+<div class="field">
+
+<div class="row">
+
+<div>
+<strong style="font-size:12px">Require customer approval</strong>
+<div class="help">
+Only approved customers can receive wholesale pricing.
+</div>
+</div>
+
+<button class="switch on" id="approval"
+onclick="toggleSwitch(this)">
+<span></span>
+</button>
+
+</div>
+
+</div>
+
+<div class="field">
+
+<div class="row">
+
+<div>
+<strong style="font-size:12px">Hide wholesale prices from retail users</strong>
+<div class="help">
+Prevent non-approved customers from seeing wholesale pricing.
+</div>
+</div>
+
+<button class="switch on" id="hidePrices"
+onclick="toggleSwitch(this)">
+<span></span>
+</button>
+
+</div>
+
+</div>
+
+<div class="field">
+
+<div class="row">
+
+<div>
+<strong style="font-size:12px">Enable automatic tier selection</strong>
+<div class="help">
+Automatically select the customer's highest eligible pricing tier.
+</div>
+</div>
+
+<button class="switch on" id="autoTier"
+onclick="toggleSwitch(this)">
+<span></span>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- NOTIFICATIONS -->
+
+<section id="notifications" class="tab-content" style="display:none">
+
+<div class="panel">
+
+<div class="panel-head">
+<div class="panel-title">Notifications</div>
+<div class="panel-desc">
+Choose which events should generate notifications.
+</div>
+</div>
+
+<div class="field">
+
+<div class="row">
+
+<div>
+<strong style="font-size:12px">New wholesale customer</strong>
+<div class="help">
+Notify when a new B2B customer is approved.
+</div>
+</div>
+
+<button class="switch on" id="newCustomer"
+onclick="toggleSwitch(this)">
+<span></span>
+</button>
+
+</div>
+
+</div>
+
+<div class="field">
+
+<div class="row">
+
+<div>
+<strong style="font-size:12px">Large wholesale order</strong>
+<div class="help">
+Notify when an order exceeds your configured threshold.
+</div>
+</div>
+
+<button class="switch on" id="largeOrder"
+onclick="toggleSwitch(this)">
+<span></span>
+</button>
+
+</div>
+
+</div>
+
+<div class="field">
+
+<div class="row">
+
+<div>
+<strong style="font-size:12px">MOQ violation</strong>
+<div class="help">
+Notify when a customer attempts an order below MOQ.
+</div>
+</div>
+
+<button class="switch" id="moqAlert"
+onclick="toggleSwitch(this)">
+<span></span>
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ACCOUNT -->
+
+<section id="account" class="tab-content" style="display:none">
+
+<div class="panel">
+
+<div class="panel-head">
+<div class="panel-title">Account</div>
+<div class="panel-desc">
+Your B2B Wholesale Pricing Fast account.
+</div>
+</div>
+
+<div class="field">
+
+<div class="account">
+
+<div class="big-avatar">M</div>
+
+<div>
+<strong style="font-size:13px">Merchant Admin</strong>
+<div class="help">admin@example.com</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="field">
+
+<label>PLAN</label>
+
+<div class="row">
+
+<div>
+<strong style="font-size:13px">Premium Trial</strong>
+<div class="help">14-day trial period</div>
+</div>
+
+<span style="
+background:var(--soft);
+color:var(--primary);
+padding:6px 9px;
+border-radius:20px;
+font-size:10px;
+font-weight:bold">
+ACTIVE
+</span>
+
+</div>
+
+</div>
+
+<div class="field">
+
+<button class="btn danger" onclick="alert('Account deletion will be connected to the real backend later.')">
+Delete account
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+<div class="actions">
+
+<button class="btn" onclick="resetSettings()">
+Reset
+</button>
+
+<button class="btn primary" onclick="saveSettings()">
+Save changes
+</button>
+
+</div>
+
+
+<div class="notice">
+<strong>Prototype status:</strong>
+The current settings are saved locally on this device.
+In the next backend phase, these values will be stored securely
+per Shopify store and authenticated merchant account.
+</div>
+
+</div>
+
+</main>
+
+
+<script>
+
+const KEY="b2b_app_settings";
+
+function toggleSwitch(el){
+el.classList.toggle("on");
+}
+
+function isOn(id){
+return document.getElementById(id).classList.contains("on");
+}
+
+function showTab(id,button){
+
+document.querySelectorAll(".tab-content").forEach(el=>{
+el.style.display="none";
+});
+
+document.getElementById(id).style.display="block";
+
+document.querySelectorAll(".tab").forEach(el=>{
+el.classList.remove("active");
+});
+
+button.classList.add("active");
+
+}
+
+function saveSettings(){
+
+const data={
+storeName:document.getElementById("storeName").value,
+currency:document.getElementById("currency").value,
+wholesaleEnabled:isOn("wholesaleEnabled"),
+approval:isOn("approval"),
+hidePrices:isOn("hidePrices"),
+autoTier:isOn("autoTier"),
+newCustomer:isOn("newCustomer"),
+largeOrder:isOn("largeOrder"),
+moqAlert:isOn("moqAlert")
+};
+
+localStorage.setItem(KEY,JSON.stringify(data));
+
+alert("Settings saved successfully.");
+
+}
+
+function loadSettings(){
+
+const raw=localStorage.getItem(KEY);
+
+if(!raw)return;
+
+try{
+
+const s=JSON.parse(raw);
+
+document.getElementById("storeName").value=s.storeName||"My Store";
+
+if(s.currency){
+document.getElementById("currency").value=s.currency;
+}
+
+[
+"wholesaleEnabled",
+"approval",
+"hidePrices",
+"autoTier",
+"newCustomer",
+"largeOrder",
+"moqAlert"
+].forEach(id=>{
+
+if(s[id]){
+document.getElementById(id).classList.add("on");
+}else{
+document.getElementById(id).classList.remove("on");
+}
+
+});
+
+}catch{}
+
+}
+
+function resetSettings(){
+
+if(!confirm("Reset app settings?"))return;
+
+localStorage.removeItem(KEY);
+
+location.reload();
+
+}
+
+function toggleTheme(){
+
+const html=document.documentElement;
+
+const dark=html.getAttribute("data-theme")==="dark";
+
+if(dark){
+
+html.removeAttribute("data-theme");
+localStorage.setItem("b2b_theme","light");
+document.getElementById("theme").textContent="☾";
+
+}else{
+
+html.setAttribute("data-theme","dark");
+localStorage.setItem("b2b_theme","dark");
+document.getElementById("theme").textContent="☀";
+
+}
+
+}
+
+if(localStorage.getItem("b2b_theme")==="dark"){
+
+document.documentElement.setAttribute("data-theme","dark");
+document.getElementById("theme").textContent="☀";
+
+}
+
+loadSettings();
+
+</script>
+
+</body>
+</html>

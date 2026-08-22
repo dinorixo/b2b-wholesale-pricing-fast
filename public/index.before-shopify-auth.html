@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B2B Wholesale Pricing Fast</title>
+
+<style>
+:root{
+--bg:#f6f7f8;
+--card:#fff;
+--text:#202223;
+--muted:#6d7175;
+--border:#e1e3e5;
+--primary:#008060;
+--primary-dark:#006e52;
+--soft:#e7f5ef;
+--danger:#d72c0d;
+}
+
+[data-theme="dark"]{
+--bg:#101312;
+--card:#181c1a;
+--text:#f1f3f2;
+--muted:#a6ada9;
+--border:#303633;
+--primary:#35b98a;
+--primary-dark:#299c75;
+--soft:#17382d;
+--danger:#ff8a75;
+}
+
+*{box-sizing:border-box}
+
+body{
+margin:0;
+background:var(--bg);
+color:var(--text);
+font-family:Arial,sans-serif;
+}
+
+button,input,select{
+font:inherit;
+}
+
+.header{
+height:64px;
+background:var(--card);
+border-bottom:1px solid var(--border);
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 18px;
+position:sticky;
+top:0;
+z-index:20;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:700;
+}
+
+.logo{
+width:36px;
+height:36px;
+border-radius:9px;
+background:var(--primary);
+color:#fff;
+display:grid;
+place-items:center;
+font-weight:800;
+}
+
+.brand span{
+color:var(--primary);
+}
+
+.header-right{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.icon{
+border:0;
+background:transparent;
+color:var(--text);
+width:38px;
+height:38px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.icon:hover{
+background:var(--bg);
+}
+
+.store{
+border:1px solid var(--border);
+background:var(--card);
+color:var(--text);
+border-radius:9px;
+padding:4px 7px 4px 12px;
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.avatar{
+width:30px;
+height:30px;
+border-radius:8px;
+background:var(--primary);
+color:#fff;
+display:grid;
+place-items:center;
+font-weight:bold;
+}
+
+.layout{
+display:flex;
+min-height:calc(100vh - 64px);
+}
+
+.sidebar{
+width:230px;
+background:var(--card);
+border-right:1px solid var(--border);
+padding:18px 12px;
+position:fixed;
+top:64px;
+bottom:0;
+}
+
+.label{
+font-size:10px;
+font-weight:bold;
+color:var(--muted);
+letter-spacing:1px;
+padding:12px 10px 7px;
+}
+
+.nav{
+width:100%;
+border:0;
+background:transparent;
+color:var(--muted);
+text-align:left;
+padding:10px;
+border-radius:8px;
+cursor:pointer;
+margin-bottom:3px;
+}
+
+.nav:hover{
+background:var(--bg);
+color:var(--text);
+}
+
+.nav.active{
+background:var(--soft);
+color:var(--primary);
+font-weight:bold;
+}
+
+.main{
+margin-left:230px;
+width:100%;
+padding:28px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:end;
+gap:20px;
+margin-bottom:24px;
+}
+
+.eyebrow{
+color:var(--primary);
+font-size:10px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:7px;
+}
+
+h1{
+margin:0;
+font-size:28px;
+}
+
+.subtitle{
+margin-top:7px;
+font-size:13px;
+color:var(--muted);
+}
+
+.actions{
+display:flex;
+gap:8px;
+}
+
+.btn{
+border:1px solid var(--border);
+background:var(--card);
+color:var(--text);
+padding:10px 14px;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.btn:hover{
+background:var(--bg);
+}
+
+.primary{
+background:var(--primary);
+border-color:var(--primary);
+color:#fff;
+}
+
+.primary:hover{
+background:var(--primary-dark);
+}
+
+.panel{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:11px;
+overflow:hidden;
+}
+
+.toolbar{
+padding:14px;
+border-bottom:1px solid var(--border);
+display:flex;
+justify-content:space-between;
+gap:10px;
+}
+
+.search{
+flex:1;
+max-width:400px;
+}
+
+.search input{
+width:100%;
+padding:10px 12px;
+border:1px solid var(--border);
+border-radius:8px;
+background:var(--card);
+color:var(--text);
+outline:none;
+}
+
+.filters{
+display:flex;
+gap:6px;
+}
+
+.filter{
+border:1px solid var(--border);
+background:var(--card);
+color:var(--muted);
+padding:9px 12px;
+border-radius:8px;
+cursor:pointer;
+}
+
+.filter.active{
+background:var(--soft);
+color:var(--primary);
+font-weight:bold;
+}
+
+.rule{
+display:flex;
+align-items:center;
+gap:14px;
+padding:16px;
+border-bottom:1px solid var(--border);
+}
+
+.rule:last-child{
+border-bottom:0;
+}
+
+.rule-info{
+flex:1;
+min-width:0;
+}
+
+.rule-name{
+font-size:14px;
+font-weight:bold;
+margin-bottom:7px;
+}
+
+.meta{
+display:flex;
+flex-wrap:wrap;
+gap:6px;
+}
+
+.badge{
+background:var(--bg);
+color:var(--muted);
+padding:4px 7px;
+border-radius:5px;
+font-size:11px;
+}
+
+.status{
+padding:5px 9px;
+border-radius:20px;
+font-size:10px;
+font-weight:bold;
+}
+
+.status.on{
+background:var(--soft);
+color:var(--primary);
+}
+
+.status.off{
+background:var(--bg);
+color:var(--muted);
+}
+
+.rule-buttons{
+display:flex;
+gap:5px;
+}
+
+.small{
+width:34px;
+height:34px;
+border:1px solid var(--border);
+background:var(--card);
+color:var(--text);
+border-radius:7px;
+cursor:pointer;
+}
+
+.empty{
+padding:60px 20px;
+text-align:center;
+color:var(--muted);
+}
+
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+display:none;
+align-items:center;
+justify-content:center;
+padding:18px;
+z-index:100;
+}
+
+.modal{
+width:100%;
+max-width:620px;
+max-height:92vh;
+overflow:auto;
+background:var(--card);
+border-radius:13px;
+border:1px solid var(--border);
+}
+
+.modal-head{
+padding:18px;
+border-bottom:1px solid var(--border);
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.modal-title{
+font-size:18px;
+font-weight:bold;
+}
+
+.modal-body{
+padding:20px;
+}
+
+.field{
+margin-bottom:16px;
+}
+
+.field label{
+display:block;
+font-size:12px;
+font-weight:bold;
+margin-bottom:7px;
+}
+
+.field input,
+.field select{
+width:100%;
+padding:11px;
+border:1px solid var(--border);
+border-radius:8px;
+background:var(--card);
+color:var(--text);
+outline:none;
+}
+
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.tier-heading{
+font-size:12px;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+.tier-labels,
+.tier-row{
+display:grid;
+grid-template-columns:1fr 1fr 1fr 36px;
+gap:7px;
+}
+
+.tier-labels{
+font-size:10px;
+color:var(--muted);
+margin-bottom:5px;
+}
+
+.tier-row{
+margin-bottom:7px;
+}
+
+.tier-row input{
+width:100%;
+padding:10px;
+border:1px solid var(--border);
+border-radius:8px;
+background:var(--card);
+color:var(--text);
+}
+
+.remove-tier{
+border:1px solid var(--border);
+background:var(--card);
+color:var(--danger);
+border-radius:7px;
+cursor:pointer;
+}
+
+.add-tier{
+width:100%;
+padding:10px;
+border:1px dashed var(--border);
+background:transparent;
+color:var(--primary);
+border-radius:8px;
+cursor:pointer;
+}
+
+.footer{
+padding:14px 18px;
+border-top:1px solid var(--border);
+display:flex;
+justify-content:flex-end;
+gap:8px;
+}
+
+.mobile{
+display:none;
+}
+
+@media(max-width:800px){
+
+.sidebar{
+display:none;
+}
+
+.main{
+margin-left:0;
+padding:22px 15px 80px;
+}
+
+.top{
+display:block;
+}
+
+.actions{
+margin-top:16px;
+}
+
+.actions .primary{
+width:100%;
+}
+
+.toolbar{
+display:block;
+}
+
+.search{
+max-width:none;
+margin-bottom:10px;
+}
+
+.filters{
+overflow:auto;
+}
+
+.mobile{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:64px;
+background:var(--card);
+border-top:1px solid var(--border);
+display:flex;
+justify-content:space-around;
+z-index:30;
+}
+
+.mobile button{
+border:0;
+background:transparent;
+color:var(--muted);
+font-size:10px;
+}
+
+.mobile button.active{
+color:var(--primary);
+font-weight:bold;
+}
+
+}
+
+@media(max-width:500px){
+
+.brand{
+font-size:12px;
+}
+
+.store span{
+display:none;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.rule{
+align-items:flex-start;
+}
+
+.status{
+display:none;
+}
+
+.rule-buttons{
+flex-direction:column;
+}
+
+}
+</style>
+
+<style id="b2bModernNavCSS">
+#b2bFinalNavigation{
+  position:sticky;
+  top:0;
+  z-index:99999;
+  width:100%;
+  box-sizing:border-box;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:10px 18px;
+  background:rgba(255,255,255,.96);
+  border-bottom:1px solid #e5e7eb;
+  box-shadow:0 2px 12px rgba(0,0,0,.05);
+  font-family:Arial,sans-serif;
+  overflow-x:auto;
+}
+
+#b2bFinalNavigation::-webkit-scrollbar{
+  display:none;
+}
+
+#b2bFinalNavigation a{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  height:38px;
+  box-sizing:border-box;
+  padding:0 13px;
+  border-radius:9px;
+  color:#5f6368;
+  background:transparent;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:600;
+  white-space:nowrap;
+  transition:.18s ease;
+}
+
+#b2bFinalNavigation a:hover{
+  color:#008060;
+  background:#f0fdf8;
+}
+
+#b2bFinalNavigation .brand{
+  color:#008060;
+  font-size:15px;
+  font-weight:800;
+  padding-left:4px;
+  padding-right:18px;
+}
+
+#b2bFinalNavigation .premium{
+  margin-left:auto;
+  color:#fff;
+  background:linear-gradient(135deg,#111827,#374151);
+  box-shadow:0 3px 10px rgba(17,24,39,.18);
+}
+
+#b2bFinalNavigation .premium:hover{
+  color:#fff;
+  background:linear-gradient(135deg,#008060,#00a878);
+}
+
+html.b2bDark #b2bFinalNavigation{
+  background:rgba(20,24,22,.97);
+  border-color:#303633;
+  box-shadow:0 2px 14px rgba(0,0,0,.25);
+}
+
+html.b2bDark #b2bFinalNavigation a{
+  color:#c5cbc8;
+}
+
+html.b2bDark #b2bFinalNavigation a:hover{
+  color:#52d6a2;
+  background:#17382d;
+}
+
+@media(max-width:800px){
+  #b2bFinalNavigation{
+    padding:8px 10px;
+    gap:3px;
+  }
+
+  #b2bFinalNavigation a{
+    height:36px;
+    padding:0 10px;
+    font-size:12px;
+  }
+
+  #b2bFinalNavigation .brand{
+    font-size:14px;
+    padding-right:8px;
+  }
+
+  #b2bFinalNavigation .premium{
+    margin-left:4px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+
+<nav id="b2bFinalNavigation">
+<a class="brand" href="index.html">B2B Fast</a>
+<a href="index.html">⌂ Home</a>
+<a href="analytics.html">📈 Analytics</a>
+<a href="sales.html">💹 Sales</a>
+<a href="orders.html">🧾 Orders</a>
+<a href="customers.html">👥 Customers</a>
+<a href="products.html">🛒 Products</a>
+<a href="price-lists.html">💰 Price Lists</a>
+<a href="settings.html">⚙ Settings</a>
+<a href="settings.html">💎 Premium</a>
+</nav>
+
+
+
+
+<header class="header">
+
+<div class="brand">
+<div class="logo">BF</div>
+<div>B2B Wholesale Pricing <span>Fast</span></div>
+</div>
+
+<div class="header-right">
+
+<button class="icon" id="themeButton" onclick="toggleTheme()">☾</button>
+
+<button class="icon">🔔</button>
+
+<div class="store">
+<span>My Store</span>
+<div class="avatar">M</div>
+</div>
+
+</div>
+
+</header>
+
+<div class="layout">
+
+<aside class="sidebar">
+
+<div class="label">OVERVIEW</div>
+
+<button class="nav">⌂ &nbsp; Dashboard</button>
+
+<div class="label">COMMERCE</div>
+
+<button class="nav active">◇ &nbsp; Pricing Rules</button>
+
+<button class="nav">♙ &nbsp; Customer Groups</button>
+
+<button class="nav">▣ &nbsp; Products</button>
+
+<button class="nav">▤ &nbsp; Price Lists</button>
+
+<div class="label">INSIGHTS</div>
+
+<button class="nav" onclick="location.href='sales.html'">◒ &nbsp; Sales Analytics</button>
+
+<div class="label">SYSTEM</div>
+
+<button class="nav" onclick="location.href='settings.html'">⚙ &nbsp; Settings</button>
+
+</aside>
+
+<main class="main">
+
+<div class="container">
+
+<div class="top">
+
+<div>
+<div class="eyebrow">COMMERCE</div>
+<h1>Pricing Rules</h1>
+<div class="subtitle">
+Control wholesale pricing automatically.
+</div>
+</div>
+
+<div class="actions">
+
+<button class="btn">Import CSV</button>
+
+<button class="btn primary" onclick="openCreate()">
++ Create rule
+</button>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="toolbar">
+
+<div class="search">
+<input
+id="search"
+placeholder="Search pricing rules..."
+oninput="render()">
+</div>
+
+<div class="filters">
+
+<button
+class="filter active"
+onclick="changeFilter('all',this)">
+All
+</button>
+
+<button
+class="filter"
+onclick="changeFilter('active',this)">
+Active
+</button>
+
+<button
+class="filter"
+onclick="changeFilter('paused',this)">
+Paused
+</button>
+
+</div>
+
+</div>
+
+<div id="ruleList"></div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+<nav class="mobile">
+
+<button>⌂<br>Home</button>
+<button class="active">◇<br>Pricing</button>
+<button onclick="openCreate()">＋<br>Create</button>
+<button>♙<br>Customers</button>
+<button>⚙<br>Settings</button>
+
+</nav>
+
+
+<!-- CREATE / EDIT MODAL -->
+
+<div class="overlay" id="overlay">
+
+<div class="modal">
+
+<div class="modal-head">
+
+<div class="modal-title" id="modalTitle">
+Create pricing rule
+</div>
+
+<button class="icon" onclick="closeModal()">✕</button>
+
+</div>
+
+<div class="modal-body">
+
+<div class="field">
+
+<label>Rule name</label>
+
+<input
+id="ruleName"
+placeholder="Example: Wholesale Tier 1">
+
+</div>
+
+<div class="grid">
+
+<div class="field">
+
+<label>Customer group</label>
+
+<select id="customerGroup">
+
+<option>Wholesale</option>
+<option>VIP Distributor</option>
+<option>Enterprise</option>
+<option>Retail</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>Discount type</label>
+
+<select id="discountType">
+
+<option>Percentage</option>
+<option>Fixed price</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="grid">
+
+<div class="field">
+
+<label>Minimum order quantity</label>
+
+<input
+id="moq"
+type="number"
+placeholder="50">
+
+</div>
+
+<div class="field">
+
+<label>Applies to</label>
+
+<select id="appliesTo">
+
+<option>All products</option>
+<option>Selected products</option>
+<option>Selected collections</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="field">
+
+<div class="tier-heading">
+Quantity pricing tiers
+</div>
+
+<div class="tier-labels">
+<span>Minimum</span>
+<span>Maximum</span>
+<span>Discount</span>
+<span></span>
+</div>
+
+<div id="tiers"></div>
+
+<button class="add-tier" onclick="addTier()">
++ Add pricing tier
+</button>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+<button class="btn" onclick="closeModal()">
+Cancel
+</button>
+
+<button class="btn primary" onclick="saveRule()">
+Save rule
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+let filter="all";
+let editingId=null;
+
+const starterRules=[
+{
+id:1,
+name:"Wholesale Tier 1",
+group:"Wholesale",
+moq:50,
+products:"All products",
+active:true,
+tiers:[
+{min:50,max:199,discount:"15%"}
+]
+},
+{
+id:2,
+name:"Wholesale Tier 2",
+group:"Wholesale",
+moq:200,
+products:"All products",
+active:true,
+tiers:[
+{min:200,max:499,discount:"30%"}
+]
+},
+{
+id:3,
+name:"Enterprise Pricing",
+group:"Enterprise",
+moq:500,
+products:"Selected products",
+active:true,
+tiers:[
+{min:500,max:"∞",discount:"40%"}
+]
+}
+];
+
+let rules;
+
+try{
+
+rules=JSON.parse(
+localStorage.getItem("b2b_rules")
+);
+
+}catch(e){
+
+rules=null;
+
+}
+
+if(!Array.isArray(rules)){
+rules=starterRules;
+localStorage.setItem(
+"b2b_rules",
+JSON.stringify(rules)
+);
+}
+
+
+function saveData(){
+
+localStorage.setItem(
+"b2b_rules",
+JSON.stringify(rules)
+);
+
+}
+
+
+function escapeText(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function render(){
+
+const list=
+document.getElementById("ruleList");
+
+const query=
+document.getElementById("search")
+.value
+.toLowerCase();
+
+let data=rules.filter(function(rule){
+
+const searchMatch=
+rule.name.toLowerCase().includes(query) ||
+rule.group.toLowerCase().includes(query);
+
+let filterMatch=true;
+
+if(filter==="active"){
+filterMatch=rule.active===true;
+}
+
+if(filter==="paused"){
+filterMatch=rule.active===false;
+}
+
+return searchMatch && filterMatch;
+
+});
+
+
+if(data.length===0){
+
+list.innerHTML=`
+<div class="empty">
+<strong>No pricing rules found</strong>
+<div style="margin-top:7px">
+Try another search or create a new rule.
+</div>
+</div>
+`;
+
+return;
+
+}
+
+
+list.innerHTML=data.map(function(rule){
+
+let tierText="No tiers";
+
+if(rule.tiers && rule.tiers.length){
+
+tierText=
+rule.tiers
+.map(function(t){
+return t.min+"–"+t.max+" · "+t.discount;
+})
+.join(" | ");
+
+}
+
+return`
+
+<div class="rule">
+
+<div class="rule-info">
+
+<div class="rule-name">
+${escapeText(rule.name)}
+</div>
+
+<div class="meta">
+
+<span class="badge">
+${escapeText(rule.group)}
+</span>
+
+<span class="badge">
+MOQ ${rule.moq || 0}
+</span>
+
+<span class="badge">
+${escapeText(rule.products)}
+</span>
+
+<span class="badge">
+${escapeText(tierText)}
+</span>
+
+</div>
+
+</div>
+
+<div class="status ${rule.active?"on":"off"}">
+${rule.active?"Active":"Paused"}
+</div>
+
+<div class="rule-buttons">
+
+<button
+class="small"
+onclick="toggleRule(${rule.id})">
+${rule.active?"Ⅱ":"▶"}
+</button>
+
+<button
+class="small"
+onclick="editRule(${rule.id})">
+✎
+</button>
+
+<button
+class="small"
+onclick="duplicateRule(${rule.id})">
+⧉
+</button>
+
+<button
+class="small"
+onclick="deleteRule(${rule.id})">
+×
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
+
+function changeFilter(value,button){
+
+filter=value;
+
+document
+.querySelectorAll(".filter")
+.forEach(function(b){
+b.classList.remove("active");
+});
+
+button.classList.add("active");
+
+render();
+
+}
+
+
+function clearTiers(){
+
+document.getElementById("tiers").innerHTML="";
+
+}
+
+
+function addTier(data){
+
+const container=
+document.getElementById("tiers");
+
+const row=
+document.createElement("div");
+
+row.className="tier-row";
+
+row.innerHTML=`
+
+<input
+type="number"
+placeholder="50"
+value="${data?.min ?? ""}">
+
+<input
+placeholder="199"
+value="${data?.max ?? ""}">
+
+<input
+placeholder="15%"
+value="${data?.discount ?? ""}">
+
+<button
+class="remove-tier"
+onclick="this.parentElement.remove()">
+×
+</button>
+
+`;
+
+container.appendChild(row);
+
+}
+
+
+function openCreate(){
+
+editingId=null;
+
+document.getElementById("modalTitle")
+.textContent="Create pricing rule";
+
+document.getElementById("ruleName").value="";
+document.getElementById("customerGroup").value="Wholesale";
+document.getElementById("discountType").value="Percentage";
+document.getElementById("moq").value="";
+document.getElementById("appliesTo").value="All products";
+
+clearTiers();
+
+addTier();
+addTier();
+
+document.getElementById("overlay")
+.style.display="flex";
+
+}
+
+
+function closeModal(){
+
+document.getElementById("overlay")
+.style.display="none";
+
+}
+
+
+function getTiers(){
+
+const rows=
+document.querySelectorAll(".tier-row");
+
+const tiers=[];
+
+rows.forEach(function(row){
+
+const inputs=
+row.querySelectorAll("input");
+
+const min=
+Number(inputs[0].value);
+
+const max=
+inputs[1].value.trim() || "∞";
+
+const discount=
+inputs[2].value.trim();
+
+if(min>0 && discount){
+
+tiers.push({
+min:min,
+max:max,
+discount:discount
+});
+
+}
+
+});
+
+return tiers;
+
+}
+
+
+function saveRule(){
+
+const name=
+document.getElementById("ruleName")
+.value.trim();
+
+if(!name){
+
+alert("Please enter a rule name.");
+return;
+
+}
+
+const tiers=getTiers();
+
+if(tiers.length===0){
+
+alert("Please add at least one pricing tier.");
+return;
+
+}
+
+const newRule={
+
+id:editingId || Date.now(),
+
+name:name,
+
+group:
+document.getElementById("customerGroup")
+.value,
+
+discountType:
+document.getElementById("discountType")
+.value,
+
+moq:
+Number(document.getElementById("moq").value) || 0,
+
+products:
+document.getElementById("appliesTo")
+.value,
+
+tiers:tiers,
+
+active:true
+
+};
+
+
+if(editingId!==null){
+
+rules=rules.map(function(rule){
+
+if(rule.id===editingId){
+
+return{
+...rule,
+...newRule,
+active:rule.active
+};
+
+}
+
+return rule;
+
+});
+
+}else{
+
+rules.unshift(newRule);
+
+}
+
+saveData();
+
+render();
+
+closeModal();
+
+}
+
+
+function editRule(id){
+
+const rule=
+rules.find(function(r){
+return r.id===id;
+});
+
+if(!rule)return;
+
+editingId=id;
+
+document.getElementById("modalTitle")
+.textContent="Edit pricing rule";
+
+document.getElementById("ruleName").value=
+rule.name;
+
+document.getElementById("customerGroup").value=
+rule.group;
+
+document.getElementById("discountType").value=
+rule.discountType || "Percentage";
+
+document.getElementById("moq").value=
+rule.moq || "";
+
+document.getElementById("appliesTo").value=
+rule.products || "All products";
+
+clearTiers();
+
+if(rule.tiers && rule.tiers.length){
+
+rule.tiers.forEach(function(tier){
+addTier(tier);
+});
+
+}else{
+
+addTier();
+
+}
+
+document.getElementById("overlay")
+.style.display="flex";
+
+}
+
+
+function toggleRule(id){
+
+rules=rules.map(function(rule){
+
+if(rule.id===id){
+
+return{
+...rule,
+active:!rule.active
+};
+
+}
+
+return rule;
+
+});
+
+saveData();
+render();
+
+}
+
+
+function duplicateRule(id){
+
+const original=
+rules.find(function(r){
+return r.id===id;
+});
+
+if(!original)return;
+
+const copy=
+JSON.parse(JSON.stringify(original));
+
+copy.id=Date.now();
+copy.name=original.name+" Copy";
+copy.active=false;
+
+rules.unshift(copy);
+
+saveData();
+render();
+
+}
+
+
+function deleteRule(id){
+
+const rule=
+rules.find(function(r){
+return r.id===id;
+});
+
+if(!rule)return;
+
+if(!confirm(
+'Delete "'+rule.name+'"?'
+)){
+return;
+}
+
+rules=
+rules.filter(function(r){
+return r.id!==id;
+});
+
+saveData();
+render();
+
+}
+
+
+function toggleTheme(){
+
+const html=
+document.documentElement;
+
+const dark=
+html.getAttribute("data-theme")==="dark";
+
+if(dark){
+
+html.removeAttribute("data-theme");
+
+localStorage.setItem(
+"b2b_theme",
+"light"
+);
+
+document.getElementById("themeButton")
+.textContent="☾";
+
+}else{
+
+html.setAttribute(
+"data-theme",
+"dark"
+);
+
+localStorage.setItem(
+"b2b_theme",
+"dark"
+);
+
+document.getElementById("themeButton")
+.textContent="☀";
+
+}
+
+}
+
+
+if(
+localStorage.getItem("b2b_theme")==="dark"
+){
+
+document.documentElement
+.setAttribute("data-theme","dark");
+
+document.getElementById("themeButton")
+.textContent="☀";
+
+}
+
+
+render();
+
+</script>
+
+</body>
+</html>

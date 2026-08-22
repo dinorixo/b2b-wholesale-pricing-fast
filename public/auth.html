@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B2B Wholesale Pricing Fast — Account</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #080b12;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  width: min(430px, 92%);
+  background: #111722;
+  border: 1px solid #252d3a;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #8f9aaa;
+  margin-bottom: 25px;
+}
+
+.tabs {
+  display: flex;
+  background: #0a0e15;
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 22px;
+}
+
+.tabs button {
+  flex: 1;
+  border: 0;
+  padding: 11px;
+  border-radius: 8px;
+  background: transparent;
+  color: #8f9aaa;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  background: #fff;
+  color: #080b12;
+}
+
+label {
+  display: block;
+  margin: 14px 0 7px;
+  font-size: 13px;
+  color: #b8c0cd;
+}
+
+input {
+  width: 100%;
+  padding: 13px;
+  border-radius: 9px;
+  border: 1px solid #2a3342;
+  background: #0b1018;
+  color: white;
+  outline: none;
+}
+
+input:focus {
+  border-color: #fff;
+}
+
+.primary {
+  width: 100%;
+  margin-top: 22px;
+  padding: 14px;
+  border: 0;
+  border-radius: 9px;
+  background: #fff;
+  color: #080b12;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.message {
+  margin-top: 15px;
+  padding: 11px;
+  border-radius: 8px;
+  display: none;
+  font-size: 14px;
+}
+
+.message.show {
+  display: block;
+}
+
+.trial {
+  margin-top: 20px;
+  text-align: center;
+  color: #8f9aaa;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="logo">
+    B2B Wholesale Pricing Fast
+  </div>
+
+  <div class="subtitle">
+    Manage your wholesale store
+  </div>
+
+  <div class="tabs">
+    <button id="loginTab"
+            class="active"
+            onclick="showLogin()">
+      Login
+    </button>
+
+    <button id="registerTab"
+            onclick="showRegister()">
+      Create Account
+    </button>
+  </div>
+
+  <form id="authForm">
+
+    <div id="nameField" style="display:none">
+      <label>Name</label>
+      <input
+        id="name"
+        type="text"
+        placeholder="Your name">
+    </div>
+
+    <label>Shop domain</label>
+
+    <input
+      id="shopDomain"
+      type="text"
+      placeholder="your-store.myshopify.com"
+      required>
+
+    <label>Email</label>
+
+    <input
+      id="email"
+      type="email"
+      placeholder="you@example.com"
+      required>
+
+    <label>Password</label>
+
+    <input
+      id="password"
+      type="password"
+      placeholder="Minimum 8 characters"
+      required>
+
+    <button
+      class="primary"
+      type="submit"
+      id="submitButton">
+      Login
+    </button>
+
+  </form>
+
+  <div id="message"
+       class="message"></div>
+
+  <div class="trial">
+    New stores receive a 14-day Premium trial.
+  </div>
+
+</div>
+
+<script>
+
+let mode = "login";
+
+function showLogin() {
+
+  mode = "login";
+
+  document
+    .getElementById("nameField")
+    .style.display = "none";
+
+  document
+    .getElementById("loginTab")
+    .classList.add("active");
+
+  document
+    .getElementById("registerTab")
+    .classList.remove("active");
+
+  document
+    .getElementById("submitButton")
+    .textContent = "Login";
+}
+
+
+function showRegister() {
+
+  mode = "register";
+
+  document
+    .getElementById("nameField")
+    .style.display = "block";
+
+  document
+    .getElementById("loginTab")
+    .classList.remove("active");
+
+  document
+    .getElementById("registerTab")
+    .classList.add("active");
+
+  document
+    .getElementById("submitButton")
+    .textContent = "Create Account";
+}
+
+
+function showMessage(text) {
+
+  const box =
+    document.getElementById("message");
+
+  box.textContent = text;
+
+  box.classList.add("show");
+}
+
+
+document
+  .getElementById("authForm")
+  .addEventListener("submit", async (event) => {
+
+    event.preventDefault();
+
+    const shopDomain =
+      document.getElementById("shopDomain").value.trim();
+
+    const email =
+      document.getElementById("email").value.trim();
+
+    const password =
+      document.getElementById("password").value;
+
+    const name =
+      document.getElementById("name").value.trim();
+
+    const endpoint =
+      mode === "login"
+        ? "/api/auth/login"
+        : "/api/auth/register";
+
+    const body =
+      mode === "login"
+        ? {
+            shopDomain,
+            email,
+            password
+          }
+        : {
+            shopDomain,
+            name,
+            email,
+            password
+          };
+
+    try {
+
+      const response =
+        await fetch(endpoint, {
+          method: "POST",
+
+          headers: {
+            "Content-Type":
+              "application/json"
+          },
+
+          body:
+            JSON.stringify(body)
+        });
+
+      const data =
+        await response.json();
+
+      if (!response.ok) {
+        showMessage(
+          data.error ||
+          "Something went wrong"
+        );
+        return;
+      }
+
+      if (data.token) {
+
+        localStorage.setItem(
+          "b2b_token",
+          data.token
+        );
+
+      }
+
+      localStorage.setItem(
+        "b2b_shop",
+        JSON.stringify(data.shop)
+      );
+
+      localStorage.setItem(
+        "b2b_user",
+        JSON.stringify(data.user)
+      );
+
+      window.location.href =
+        "/dashboard.html";
+
+    } catch (error) {
+
+      showMessage(
+        "Could not connect to server."
+      );
+
+    }
+
+  });
+
+</script>
+
+</body>
+</html>

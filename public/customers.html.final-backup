@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B2B Wholesale Pricing Fast — Customer Groups</title>
+
+<style>
+:root{
+--bg:#f6f7f8;
+--card:#fff;
+--text:#202223;
+--muted:#6d7175;
+--border:#e1e3e5;
+--primary:#008060;
+--soft:#e7f5ef;
+}
+
+[data-theme="dark"]{
+--bg:#101312;
+--card:#181c1a;
+--text:#f1f3f2;
+--muted:#a6ada9;
+--border:#303633;
+--primary:#35b98a;
+--soft:#17382d;
+}
+
+*{box-sizing:border-box}
+
+body{
+margin:0;
+background:var(--bg);
+color:var(--text);
+font-family:Arial,sans-serif;
+}
+
+button,input,select{
+font:inherit;
+}
+
+.header{
+height:64px;
+background:var(--card);
+border-bottom:1px solid var(--border);
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 18px;
+position:sticky;
+top:0;
+z-index:20;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:700;
+}
+
+.logo{
+width:36px;
+height:36px;
+border-radius:9px;
+background:var(--primary);
+color:#fff;
+display:grid;
+place-items:center;
+font-weight:800;
+}
+
+.brand span{
+color:var(--primary);
+}
+
+.right{
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.icon{
+width:38px;
+height:38px;
+border:0;
+background:transparent;
+color:var(--text);
+border-radius:8px;
+cursor:pointer;
+}
+
+.store{
+border:1px solid var(--border);
+background:var(--card);
+color:var(--text);
+border-radius:9px;
+padding:4px 7px 4px 12px;
+display:flex;
+align-items:center;
+gap:8px;
+}
+
+.avatar{
+width:30px;
+height:30px;
+border-radius:8px;
+background:var(--primary);
+color:#fff;
+display:grid;
+place-items:center;
+font-weight:bold;
+}
+
+.layout{
+display:flex;
+min-height:calc(100vh - 64px);
+}
+
+.sidebar{
+width:230px;
+background:var(--card);
+border-right:1px solid var(--border);
+position:fixed;
+top:64px;
+bottom:0;
+padding:18px 12px;
+}
+
+.label{
+font-size:10px;
+font-weight:bold;
+color:var(--muted);
+letter-spacing:1px;
+padding:12px 10px 7px;
+}
+
+.nav{
+width:100%;
+border:0;
+background:transparent;
+color:var(--muted);
+text-align:left;
+padding:10px;
+border-radius:8px;
+cursor:pointer;
+margin-bottom:3px;
+}
+
+.nav:hover{
+background:var(--bg);
+color:var(--text);
+}
+
+.nav.active{
+background:var(--soft);
+color:var(--primary);
+font-weight:bold;
+}
+
+.main{
+margin-left:230px;
+width:100%;
+padding:28px;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:end;
+gap:20px;
+margin-bottom:24px;
+}
+
+.eyebrow{
+color:var(--primary);
+font-size:10px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:7px;
+}
+
+h1{
+margin:0;
+font-size:28px;
+}
+
+.subtitle{
+margin-top:7px;
+font-size:13px;
+color:var(--muted);
+}
+
+.actions{
+display:flex;
+gap:8px;
+}
+
+.btn{
+border:1px solid var(--border);
+background:var(--card);
+color:var(--text);
+padding:10px 14px;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+}
+
+.primary{
+background:var(--primary);
+border-color:var(--primary);
+color:#fff;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:12px;
+margin-bottom:18px;
+}
+
+.stat{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:10px;
+padding:18px;
+}
+
+.stat-title{
+font-size:12px;
+color:var(--muted);
+}
+
+.stat-number{
+font-size:25px;
+font-weight:bold;
+margin-top:7px;
+}
+
+.panel{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:11px;
+overflow:hidden;
+}
+
+.toolbar{
+padding:14px;
+border-bottom:1px solid var(--border);
+display:flex;
+justify-content:space-between;
+gap:10px;
+}
+
+.search{
+flex:1;
+max-width:400px;
+}
+
+.search input{
+width:100%;
+padding:10px 12px;
+border:1px solid var(--border);
+border-radius:8px;
+background:var(--card);
+color:var(--text);
+outline:none;
+}
+
+.group{
+display:flex;
+align-items:center;
+gap:14px;
+padding:17px;
+border-bottom:1px solid var(--border);
+}
+
+.group:last-child{
+border-bottom:0;
+}
+
+.group-icon{
+width:42px;
+height:42px;
+border-radius:10px;
+background:var(--soft);
+color:var(--primary);
+display:grid;
+place-items:center;
+font-weight:bold;
+}
+
+.info{
+flex:1;
+min-width:0;
+}
+
+.name{
+font-size:14px;
+font-weight:bold;
+margin-bottom:6px;
+}
+
+.meta{
+display:flex;
+flex-wrap:wrap;
+gap:6px;
+}
+
+.badge{
+background:var(--bg);
+color:var(--muted);
+padding:4px 7px;
+border-radius:5px;
+font-size:11px;
+}
+
+.status{
+padding:5px 9px;
+border-radius:20px;
+background:var(--soft);
+color:var(--primary);
+font-size:10px;
+font-weight:bold;
+}
+
+.buttons{
+display:flex;
+gap:5px;
+}
+
+.small{
+width:34px;
+height:34px;
+border:1px solid var(--border);
+background:var(--card);
+color:var(--text);
+border-radius:7px;
+cursor:pointer;
+}
+
+.empty{
+padding:60px 20px;
+text-align:center;
+color:var(--muted);
+}
+
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.5);
+display:none;
+align-items:center;
+justify-content:center;
+padding:18px;
+z-index:100;
+}
+
+.modal{
+width:100%;
+max-width:560px;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:13px;
+overflow:hidden;
+}
+
+.modal-head{
+padding:18px;
+border-bottom:1px solid var(--border);
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.modal-title{
+font-size:18px;
+font-weight:bold;
+}
+
+.body{
+padding:20px;
+}
+
+.field{
+margin-bottom:16px;
+}
+
+.field label{
+display:block;
+font-size:12px;
+font-weight:bold;
+margin-bottom:7px;
+}
+
+.field input,
+.field select{
+width:100%;
+padding:11px;
+border:1px solid var(--border);
+border-radius:8px;
+background:var(--card);
+color:var(--text);
+}
+
+.footer{
+padding:14px 18px;
+border-top:1px solid var(--border);
+display:flex;
+justify-content:flex-end;
+gap:8px;
+}
+
+.mobile{
+display:none;
+}
+
+@media(max-width:800px){
+
+.sidebar{
+display:none;
+}
+
+.main{
+margin-left:0;
+padding:22px 15px 80px;
+}
+
+.top{
+display:block;
+}
+
+.actions{
+margin-top:16px;
+}
+
+.actions .primary{
+width:100%;
+}
+
+.stats{
+grid-template-columns:1fr;
+}
+
+.toolbar{
+display:block;
+}
+
+.search{
+max-width:none;
+}
+
+.mobile{
+position:fixed;
+bottom:0;
+left:0;
+right:0;
+height:64px;
+background:var(--card);
+border-top:1px solid var(--border);
+display:flex;
+justify-content:space-around;
+z-index:30;
+}
+
+.mobile button{
+border:0;
+background:transparent;
+color:var(--muted);
+font-size:10px;
+}
+
+.mobile .active{
+color:var(--primary);
+font-weight:bold;
+}
+
+}
+
+@media(max-width:500px){
+
+.brand{
+font-size:12px;
+}
+
+.store span{
+display:none;
+}
+
+.group{
+align-items:flex-start;
+}
+
+.status{
+display:none;
+}
+
+.buttons{
+flex-direction:column;
+}
+
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="brand">
+<div class="logo">BF</div>
+<div>B2B Wholesale Pricing <span>Fast</span></div>
+</div>
+
+<div class="right">
+
+<button
+class="icon"
+id="theme"
+onclick="toggleTheme()">☾</button>
+
+<button class="icon">🔔</button>
+
+<div class="store">
+<span>My Store</span>
+<div class="avatar">M</div>
+</div>
+
+</div>
+
+</header>
+
+
+<div class="layout">
+
+<aside class="sidebar">
+
+<div class="label">OVERVIEW</div>
+
+<button class="nav"
+onclick="location.href='index.html'">
+⌂ &nbsp; Dashboard
+</button>
+
+<div class="label">COMMERCE</div>
+
+<button class="nav"
+onclick="location.href='index.html'">
+◇ &nbsp; Pricing Rules
+</button>
+
+<button class="nav active">
+♙ &nbsp; Customer Groups
+</button>
+
+<button class="nav">
+▣ &nbsp; Products
+</button>
+
+<button class="nav">
+▤ &nbsp; Price Lists
+</button>
+
+<div class="label">INSIGHTS</div>
+
+<button class="nav">
+◒ &nbsp; Analytics
+</button>
+
+<div class="label">SYSTEM</div>
+
+<button class="nav">
+⚙ &nbsp; Settings
+</button>
+
+</aside>
+
+
+<main class="main">
+
+<div class="container">
+
+<div class="top">
+
+<div>
+
+<div class="eyebrow">COMMERCE</div>
+
+<h1>Customer Groups</h1>
+
+<div class="subtitle">
+Organize buyers and assign wholesale pricing automatically.
+</div>
+
+</div>
+
+<div class="actions">
+
+<button
+class="btn primary"
+onclick="openCreate()">
++ Create group
+</button>
+
+</div>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+<div class="stat-title">Total Customers</div>
+<div class="stat-number">4,821</div>
+</div>
+
+<div class="stat">
+<div class="stat-title">B2B Customers</div>
+<div class="stat-number">382</div>
+</div>
+
+<div class="stat">
+<div class="stat-title">Customer Groups</div>
+<div class="stat-number" id="groupCount">0</div>
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<div class="toolbar">
+
+<div class="search">
+
+<input
+id="search"
+placeholder="Search customer groups..."
+oninput="render()">
+
+</div>
+
+</div>
+
+<div id="groups"></div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+
+
+<nav class="mobile">
+
+<button onclick="location.href='index.html'">
+⌂<br>Home
+</button>
+
+<button onclick="location.href='index.html'">
+◇<br>Pricing
+</button>
+
+<button onclick="openCreate()">
+＋<br>Create
+</button>
+
+<button class="active">
+♙<br>Customers
+</button>
+
+<button>
+⚙<br>Settings
+</button>
+
+</nav>
+
+
+<div class="overlay" id="overlay">
+
+<div class="modal">
+
+<div class="modal-head">
+
+<div class="modal-title" id="modalTitle">
+Create customer group
+</div>
+
+<button
+class="icon"
+onclick="closeModal()">✕</button>
+
+</div>
+
+
+<div class="body">
+
+<div class="field">
+
+<label>Group name</label>
+
+<input
+id="groupName"
+placeholder="Example: VIP Distributor">
+
+</div>
+
+
+<div class="field">
+
+<label>Customer tag</label>
+
+<input
+id="tag"
+placeholder="Example: wholesale_vip">
+
+</div>
+
+
+<div class="field">
+
+<label>Pricing rule</label>
+
+<select id="pricingRule"></select>
+
+</div>
+
+
+<div class="field">
+
+<label>Description</label>
+
+<input
+id="description"
+placeholder="Customers receiving wholesale pricing">
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+<button
+class="btn"
+onclick="closeModal()">
+Cancel
+</button>
+
+<button
+class="btn primary"
+onclick="saveGroup()">
+Save group
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+let groups = [];
+let editingId = null;
+
+const starterGroups = [
+
+{
+id:1,
+name:"Wholesale",
+tag:"wholesale",
+rule:"Wholesale Tier 1",
+description:"Standard wholesale customers",
+customers:248
+},
+
+{
+id:2,
+name:"VIP Distributor",
+tag:"wholesale_vip",
+rule:"VIP Distributor",
+description:"High-volume distribution partners",
+customers:86
+},
+
+{
+id:3,
+name:"Enterprise",
+tag:"enterprise",
+rule:"Enterprise Pricing",
+description:"Large corporate buyers",
+customers:48
+}
+
+];
+
+
+/* LOAD GROUPS */
+
+async function loadGroups(){
+
+try{
+
+const response =
+await fetch("/api/groups");
+
+if(!response.ok){
+
+throw new Error(
+"Groups API returned HTTP " +
+response.status
+);
+
+}
+
+let data =
+await response.json();
+
+
+/*
+Migrate old localStorage groups
+only when the backend is empty.
+*/
+
+if(
+Array.isArray(data) &&
+data.length === 0 &&
+!localStorage.getItem("b2b_groups_migrated")
+){
+
+let oldGroups = null;
+
+try{
+
+oldGroups =
+JSON.parse(
+localStorage.getItem("b2b_groups")
+);
+
+}catch(error){
+
+oldGroups = null;
+
+}
+
+
+if(
+!Array.isArray(oldGroups) ||
+oldGroups.length === 0
+){
+
+oldGroups = starterGroups;
+
+}
+
+
+const migrated = [];
+
+for(
+const oldGroup of oldGroups
+){
+
+const response =
+await fetch(
+"/api/groups",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+name:oldGroup.name,
+tag:oldGroup.tag,
+rule:oldGroup.rule,
+description:oldGroup.description || "",
+customers:Number(
+oldGroup.customers || 0
+)
+
+})
+
+});
+
+
+if(!response.ok){
+
+throw new Error(
+"Customer group migration failed."
+);
+
+}
+
+
+const created =
+await response.json();
+
+migrated.push(created);
+
+}
+
+
+data = migrated;
+
+localStorage.setItem(
+"b2b_groups_migrated",
+"true"
+);
+
+}
+
+
+groups =
+Array.isArray(data)
+? data
+: [];
+
+render();
+
+}catch(error){
+
+console.error(error);
+
+groups = [];
+
+render();
+
+alert(
+"Could not connect to the customer groups database. Make sure the server is running."
+);
+
+}
+
+}
+
+
+/* LOAD PRICING RULES */
+
+async function getRules(){
+
+try{
+
+const response =
+await fetch("/api/rules");
+
+if(!response.ok){
+
+throw new Error(
+"Rules API returned HTTP " +
+response.status
+);
+
+}
+
+let rules =
+await response.json();
+
+
+/*
+If backend rules are empty,
+migrate old localStorage rules once.
+*/
+
+if(
+Array.isArray(rules) &&
+rules.length === 0 &&
+!localStorage.getItem("b2b_rules_migrated")
+){
+
+let oldRules = null;
+
+try{
+
+oldRules =
+JSON.parse(
+localStorage.getItem("b2b_rules")
+);
+
+}catch(error){
+
+oldRules = null;
+
+}
+
+
+if(Array.isArray(oldRules)){
+
+for(
+const oldRule of oldRules
+){
+
+const response =
+await fetch(
+"/api/rules",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify(oldRule)
+
+}
+);
+
+
+if(!response.ok){
+
+throw new Error(
+"Pricing rule migration failed."
+);
+
+}
+
+}
+
+}
+
+
+localStorage.setItem(
+"b2b_rules_migrated",
+"true"
+);
+
+
+const refreshed =
+await fetch("/api/rules");
+
+if(refreshed.ok){
+
+rules =
+await refreshed.json();
+
+}
+
+}
+
+
+return Array.isArray(rules)
+? rules
+: [];
+
+}catch(error){
+
+console.error(error);
+
+return [];
+
+}
+
+}
+
+
+/* LOAD RULE DROPDOWN */
+
+async function loadRules(
+selectedRule = ""
+){
+
+const select =
+document.getElementById("pricingRule");
+
+select.innerHTML =
+"<option>Loading pricing rules...</option>";
+
+const rules =
+await getRules();
+
+select.innerHTML = "";
+
+
+if(!rules.length){
+
+const option =
+document.createElement("option");
+
+option.value = "";
+
+option.textContent =
+"No pricing rules created";
+
+select.appendChild(option);
+
+return;
+
+}
+
+
+rules.forEach(function(rule){
+
+const option =
+document.createElement("option");
+
+option.value =
+rule.name || "";
+
+option.textContent =
+rule.name || "Unnamed rule";
+
+if(
+selectedRule &&
+rule.name === selectedRule
+){
+
+option.selected = true;
+
+}
+
+select.appendChild(option);
+
+});
+
+}
+
+
+/* RENDER */
+
+function render(){
+
+const box =
+document.getElementById("groups");
+
+const searchInput =
+document.getElementById("search");
+
+const query =
+searchInput
+.value
+.toLowerCase();
+
+
+const filtered =
+groups.filter(function(group){
+
+const name =
+String(group.name || "")
+.toLowerCase();
+
+const tag =
+String(group.tag || "")
+.toLowerCase();
+
+return(
+name.includes(query) ||
+tag.includes(query)
+);
+
+});
+
+
+document.getElementById("groupCount")
+.textContent =
+groups.length;
+
+
+if(!filtered.length){
+
+box.innerHTML = `
+
+<div class="empty">
+
+<strong>No customer groups found</strong>
+
+<div style="margin-top:7px">
+
+Create a group to start managing B2B customers.
+
+</div>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+box.innerHTML =
+filtered.map(function(group){
+
+return `
+
+<div class="group">
+
+<div class="group-icon">
+
+${escapeText(
+String(group.name || "?")
+.charAt(0)
+.toUpperCase()
+)}
+
+</div>
+
+
+<div class="info">
+
+<div class="name">
+
+${escapeText(
+group.name || "Unnamed group"
+)}
+
+</div>
+
+
+<div class="meta">
+
+<span class="badge">
+
+${Number(
+group.customers || 0
+)} customers
+
+</span>
+
+
+<span class="badge">
+
+Tag:
+${escapeText(
+group.tag || "-"
+)}
+
+</span>
+
+
+<span class="badge">
+
+Rule:
+${escapeText(
+group.rule || "-"
+)}
+
+</span>
+
+</div>
+
+</div>
+
+
+<div class="status">
+
+Active
+
+</div>
+
+
+<div class="buttons">
+
+<button
+class="small"
+onclick="editGroup(${Number(group.id)})">
+
+✎
+
+</button>
+
+
+<button
+class="small"
+onclick="deleteGroup(${Number(group.id)})">
+
+×
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}).join("");
+
+}
+
+
+/* ESCAPE TEXT */
+
+function escapeText(value){
+
+return String(value)
+
+.replace(/&/g,"&amp;")
+
+.replace(/</g,"&lt;")
+
+.replace(/>/g,"&gt;")
+
+.replace(/"/g,"&quot;")
+
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* CREATE */
+
+async function openCreate(){
+
+editingId = null;
+
+
+document.getElementById("modalTitle")
+.textContent =
+"Create customer group";
+
+
+document.getElementById("groupName")
+.value = "";
+
+document.getElementById("tag")
+.value = "";
+
+document.getElementById("description")
+.value = "";
+
+
+await loadRules();
+
+
+document.getElementById("overlay")
+.style.display =
+"flex";
+
+}
+
+
+/* CLOSE */
+
+function closeModal(){
+
+document.getElementById("overlay")
+.style.display =
+"none";
+
+}
+
+
+/* SAVE */
+
+async function saveGroup(){
+
+const name =
+document.getElementById("groupName")
+.value
+.trim();
+
+const tag =
+document.getElementById("tag")
+.value
+.trim();
+
+const rule =
+document.getElementById("pricingRule")
+.value;
+
+const description =
+document.getElementById("description")
+.value
+.trim();
+
+
+if(!name){
+
+alert("Enter a group name.");
+
+return;
+
+}
+
+
+if(!tag){
+
+alert("Enter a customer tag.");
+
+return;
+
+}
+
+
+const groupData = {
+
+name:name,
+
+tag:tag,
+
+rule:rule,
+
+description:description
+
+};
+
+
+try{
+
+let response;
+
+
+if(editingId !== null){
+
+response =
+await fetch(
+"/api/groups/" + editingId,
+{
+
+method:"PUT",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify(groupData)
+
+}
+);
+
+}else{
+
+response =
+await fetch(
+"/api/groups",
+{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+...groupData,
+
+customers:0
+
+})
+
+}
+);
+
+}
+
+
+if(!response.ok){
+
+throw new Error(
+"Server returned HTTP " +
+response.status
+);
+
+}
+
+
+const savedGroup =
+await response.json();
+
+
+if(editingId !== null){
+
+groups =
+groups.map(function(item){
+
+return item.id === editingId
+? savedGroup
+: item;
+
+});
+
+}else{
+
+groups.unshift(savedGroup);
+
+}
+
+
+editingId = null;
+
+render();
+
+closeModal();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Could not save the customer group."
+);
+
+}
+
+}
+
+
+/* EDIT */
+
+async function editGroup(id){
+
+const group =
+groups.find(function(g){
+
+return g.id === id;
+
+});
+
+
+if(!group){
+
+return;
+
+}
+
+
+editingId = id;
+
+
+document.getElementById("modalTitle")
+.textContent =
+"Edit customer group";
+
+
+document.getElementById("groupName")
+.value =
+group.name || "";
+
+
+document.getElementById("tag")
+.value =
+group.tag || "";
+
+
+document.getElementById("description")
+.value =
+group.description || "";
+
+
+await loadRules(
+group.rule || ""
+);
+
+
+document.getElementById("overlay")
+.style.display =
+"flex";
+
+}
+
+
+/* DELETE */
+
+async function deleteGroup(id){
+
+const group =
+groups.find(function(g){
+
+return g.id === id;
+
+});
+
+
+if(!group){
+
+return;
+
+}
+
+
+if(
+!confirm(
+'Delete "' +
+group.name +
+'"?'
+)
+){
+
+return;
+
+}
+
+
+try{
+
+const response =
+await fetch(
+"/api/groups/" + id,
+{
+method:"DELETE"
+}
+);
+
+
+if(!response.ok){
+
+throw new Error(
+"Server returned HTTP " +
+response.status
+);
+
+}
+
+
+groups =
+groups.filter(function(g){
+
+return g.id !== id;
+
+});
+
+
+render();
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Could not delete the customer group."
+);
+
+}
+
+}
+
+
+/* THEME */
+
+function toggleTheme(){
+
+const html =
+document.documentElement;
+
+const dark =
+html.getAttribute("data-theme")
+=== "dark";
+
+
+if(dark){
+
+html.removeAttribute("data-theme");
+
+localStorage.setItem(
+"b2b_theme",
+"light"
+);
+
+document.getElementById("theme")
+.textContent =
+"☾";
+
+}else{
+
+html.setAttribute(
+"data-theme",
+"dark"
+);
+
+localStorage.setItem(
+"b2b_theme",
+"dark"
+);
+
+document.getElementById("theme")
+.textContent =
+"☀";
+
+}
+
+}
+
+
+/* LOAD THEME */
+
+if(
+localStorage.getItem("b2b_theme")
+=== "dark"
+){
+
+document.documentElement
+.setAttribute(
+"data-theme",
+"dark"
+);
+
+document.getElementById("theme")
+.textContent =
+"☀";
+
+}
+
+
+/* START */
+
+loadGroups();
+
+</script>
+
+</body>
+</html>

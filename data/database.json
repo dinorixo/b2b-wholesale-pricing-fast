@@ -1,0 +1,50 @@
+{
+  "shops": [
+    {
+      "id": "shop_1787381059172_j7ro3b",
+      "shopDomain": "demo-store.myshopify.com",
+      "shopName": "Demo Store",
+      "plan": "premium_trial",
+      "subscriptionStatus": "trialing",
+      "trialStartedAt": "2026-08-22T06:44:19.170Z",
+      "createdAt": "2026-08-22T06:44:19.170Z",
+      "updatedAt": "2026-08-22T06:44:19.170Z"
+    }
+  ],
+  "pricingRules": [],
+  "customerGroups": [],
+  "priceLists": [],
+  "settings": [
+    {
+      "id": "settings_1787381059172_uwwrb3",
+      "shopId": "shop_1787381059172_j7ro3b",
+      "currency": "USD",
+      "wholesaleEnabled": true,
+      "requireCustomerApproval": true,
+      "hideWholesalePrices": true,
+      "automaticTiers": true,
+      "createdAt": "2026-08-22T06:44:19.170Z",
+      "updatedAt": "2026-08-22T06:44:19.170Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "user_1787381226316_s95eu9j4",
+      "shopId": "shop_1787381059172_j7ro3b",
+      "name": "Demo Owner",
+      "email": "demo@example.com",
+      "passwordHash": "$2b$12$/ei3qjvX0Rcqyd0vfq8Mze2mUOYLWnbZilJ7ZEe3cte9D/bKLXXaC",
+      "role": "owner",
+      "createdAt": "2026-08-22T06:47:06.314Z",
+      "updatedAt": "2026-08-22T06:47:06.314Z"
+    }
+  ],
+  "sessions": [
+    {
+      "id": "session_1787381308349_9mj0f992",
+      "userId": "user_1787381226316_s95eu9j4",
+      "token": "043f0e08bad3effa38b89c60623d8b55a74d45dfd677e20c8807c894848309e6",
+      "createdAt": "2026-08-22T06:48:28.349Z"
+    }
+  ]
+}

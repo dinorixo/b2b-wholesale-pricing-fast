@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>B2B Wholesale Pricing Fast — Billing</title>
+
+<style>
+
+:root{
+--bg:#f6f7f8;
+--card:#fff;
+--text:#202223;
+--muted:#6d7175;
+--border:#e1e3e5;
+--primary:#008060;
+--soft:#e7f5ef;
+}
+
+[data-theme="dark"]{
+--bg:#101312;
+--card:#181c1a;
+--text:#f1f3f2;
+--muted:#a6ada9;
+--border:#303633;
+--primary:#35b98a;
+--soft:#17382d;
+}
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+min-height:100vh;
+background:var(--bg);
+color:var(--text);
+font-family:Arial,sans-serif;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+}
+
+.card{
+width:100%;
+max-width:500px;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:16px;
+padding:30px;
+text-align:center;
+}
+
+.logo{
+width:50px;
+height:50px;
+margin:0 auto 18px;
+border-radius:12px;
+background:var(--primary);
+color:#fff;
+display:grid;
+place-items:center;
+font-weight:bold;
+}
+
+h1{
+margin:0;
+font-size:25px;
+}
+
+p{
+color:var(--muted);
+font-size:13px;
+line-height:1.6;
+}
+
+.plan{
+margin:25px 0;
+padding:20px;
+border:1px solid var(--border);
+border-radius:12px;
+text-align:left;
+}
+
+.price{
+font-size:30px;
+font-weight:bold;
+margin:8px 0;
+}
+
+.price span{
+font-size:12px;
+color:var(--muted);
+font-weight:normal;
+}
+
+.features{
+padding:0;
+margin:15px 0;
+list-style:none;
+font-size:12px;
+line-height:2;
+}
+
+button{
+width:100%;
+border:0;
+padding:13px;
+border-radius:8px;
+background:var(--primary);
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+.secondary{
+margin-top:10px;
+background:transparent;
+border:1px solid var(--border);
+color:var(--text);
+}
+
+.status{
+background:var(--soft);
+padding:12px;
+border-radius:9px;
+font-size:11px;
+color:var(--primary);
+margin-bottom:18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="logo">BF</div>
+
+<h1>Your Premium access has ended</h1>
+
+<p>
+Your 14-day Premium trial has expired.
+Choose a subscription to continue using
+B2B Wholesale Pricing Fast.
+</p>
+
+<div class="status">
+Premium features are currently locked.
+</div>
+
+<div class="plan">
+
+<strong>Premium</strong>
+
+<div class="price">
+$49
+<span>/ month</span>
+</div>
+
+<ul class="features">
+<li>✓ Unlimited wholesale pricing rules</li>
+<li>✓ Customer pricing tiers</li>
+<li>✓ MOQ rules</li>
+<li>✓ Price lists</li>
+<li>✓ Analytics</li>
+<li>✓ Priority support</li>
+</ul>
+
+<button onclick="startCheckout()">
+Subscribe to Premium
+</button>
+
+</div>
+
+<button
+class="secondary"
+onclick="logout()">
+Sign out
+</button>
+
+</div>
+
+<script>
+
+function startCheckout(){
+
+alert(
+"Shopify billing will be connected here next."
+);
+
+}
+
+function logout(){
+
+localStorage.removeItem("b2b_auth_token");
+localStorage.removeItem("b2b_user");
+
+window.location.href="/login.html";
+
+}
+
+</script>
+
+</body>
+</html>

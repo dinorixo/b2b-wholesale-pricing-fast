@@ -1,0 +1,24 @@
+
+==========================================
+ B2B Wholesale Pricing Fast
+ Server running on http://localhost:3000
+==========================================
+Dashboard API: /api/dashboard
+Analytics API: /api/analytics/overview
+Orders API: /api/orders
+Customers API: /api/customers
+Premium API: /api/premium
+Export: /api/export/orders.csv
+==========================================
+
+==========================================
+ B2B Wholesale Pricing Fast
+ Server running on http://localhost:3000
+==========================================
+Dashboard API: /api/dashboard
+Analytics API: /api/analytics/overview
+Orders API: /api/orders
+Customers API: /api/customers
+Premium API: /api/premium
+Export: /api/export/orders.csv
+==========================================

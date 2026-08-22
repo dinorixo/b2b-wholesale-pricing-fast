@@ -1,0 +1,15 @@
+name = "B2B Wholesale Pricing Fast"
+
+client_id = "132aea681b534c131a728008b3397cc3"
+
+application_url = "https://critical-wherever-regulated-live.trycloudflare.com"
+
+embedded = true
+
+[access_scopes]
+scopes = "read_products,read_customers,read_orders"
+
+[auth]
+redirect_urls = [
+  "https://critical-wherever-regulated-live.trycloudflare.com/api/auth/callback"
+]

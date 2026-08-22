@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B2B Wholesale Pricing Fast — Price Editor</title>
+
+<style>
+:root{
+--bg:#f6f7f8;
+--card:#fff;
+--text:#202223;
+--muted:#6d7175;
+--border:#e1e3e5;
+--primary:#008060;
+--soft:#e7f5ef;
+--danger:#d72c0d;
+}
+[data-theme="dark"]{
+--bg:#101312;
+--card:#181c1a;
+--text:#f1f3f2;
+--muted:#a6ada9;
+--border:#303633;
+--primary:#35b98a;
+--soft:#17382d;
+--danger:#ff6b52;
+}
+*{box-sizing:border-box}
+body{
+margin:0;
+background:var(--bg);
+color:var(--text);
+font-family:Arial,sans-serif;
+}
+button,input,select{font:inherit}
+.header{
+height:64px;
+background:var(--card);
+border-bottom:1px solid var(--border);
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 18px;
+position:sticky;
+top:0;
+z-index:20;
+}
+.brand{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:700;
+}
+.logo{
+width:36px;
+height:36px;
+border-radius:9px;
+background:var(--primary);
+color:white;
+display:grid;
+place-items:center;
+font-weight:800;
+}
+.brand span{color:var(--primary)}
+.right{display:flex;align-items:center;gap:7px}
+.icon{
+width:38px;
+height:38px;
+border:0;
+background:transparent;
+color:var(--text);
+border-radius:8px;
+cursor:pointer;
+}
+.store{
+border:1px solid var(--border);
+background:var(--card);
+color:var(--text);
+border-radius:9px;
+padding:4px 7px 4px 12px;
+display:flex;
+align-items:center;
+gap:8px;
+}
+.avatar{
+width:30px;
+height:30px;
+border-radius:8px;
+background:var(--primary);
+color:#fff;
+display:grid;
+place-items:center;
+font-weight:bold;
+}
+.main{
+padding:28px;
+margin-left:230px;
+}
+.sidebar{
+width:230px;
+position:fixed;
+top:64px;
+bottom:0;
+background:var(--card);
+border-right:1px solid var(--border);
+padding:18px 12px;
+}
+.label{
+font-size:10px;
+font-weight:bold;
+letter-spacing:1px;
+color:var(--muted);
+padding:12px 10px 7px;
+}
+.nav{
+width:100%;
+border:0;
+background:transparent;
+color:var(--muted);
+text-align:left;
+padding:10px;
+border-radius:8px;
+cursor:pointer;
+margin-bottom:3px;
+}
+.nav.active{
+background:var(--soft);
+color:var(--primary);
+font-weight:bold;
+}
+.container{max-width:1100px;margin:auto}
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+margin-bottom:24px;
+}
+.back{
+color:var(--muted);
+font-size:12px;
+cursor:pointer;
+margin-bottom:8px;
+}
+h1{margin:0;font-size:27px}
+.subtitle{
+margin-top:7px;
+color:var(--muted);
+font-size:13px;
+}
+.actions{display:flex;gap:8px}
+.btn{
+border:1px solid var(--border);
+background:var(--card);
+color:var(--text);
+padding:10px 14px;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
+}
+.primary{
+background:var(--primary);
+border-color:var(--primary);
+color:white;
+}
+.grid{
+display:grid;
+grid-template-columns:1.5fr .8fr;
+gap:18px;
+}
+.panel{
+background:var(--card);
+border:1px solid var(--border);
+border-radius:11px;
+overflow:hidden;
+margin-bottom:18px;
+}
+.panel-head{
+padding:17px;
+border-bottom:1px solid var(--border);
+}
+.panel-title{
+font-weight:bold;
+font-size:15px;
+}
+.panel-sub{
+font-size:11px;
+color:var(--muted);
+margin-top:5px;
+}
+.tier{
+padding:16px;
+border-bottom:1px solid var(--border);
+}
+.tier:last-child{border-bottom:0}
+.tier-row{
+display:grid;
+grid-template-columns:1fr 1fr 1fr auto;
+gap:10px;
+align-items:end;
+}
+.field label{
+display:block;
+font-size:10px;
+font-weight:bold;
+color:var(--muted);
+margin-bottom:6px;
+}
+.field input{
+width:100%;
+padding:10px;
+border:1px solid var(--border);
+border-radius:7px;
+background:var(--card);
+color:var(--text);
+outline:none;
+}
+.remove{
+width:36px;
+height:36px;
+border:1px solid var(--border);
+background:var(--card);
+color:var(--danger);
+border-radius:7px;
+cursor:pointer;
+}
+.product{
+padding:14px 16px;
+display:flex;
+gap:12px;
+align-items:center;
+border-bottom:1px solid var(--border);
+}
+.product:last-child{border-bottom:0}
+.product-icon{
+width:43px;
+height:43px;
+border-radius:8px;
+background:var(--soft);
+display:grid;
+place-items:center;
+}
+.product-info{flex:1}
+.product-name{
+font-size:13px;
+font-weight:bold;
+}
+.product-meta{
+font-size:10px;
+color:var(--muted);
+margin-top:4px;
+}
+.price-input{
+width:100px!important;
+}
+.switch{
+position:relative;
+width:38px;
+height:22px;
+}
+.switch input{display:none}
+.slider{
+position:absolute;
+inset:0;
+border-radius:20px;
+background:#aaa;
+cursor:pointer;
+}
+.slider:before{
+content:"";
+position:absolute;
+width:16px;
+height:16px;
+left:3px;
+top:3px;
+border-radius:50%;
+background:white;
+transition:.2s;
+}
+.switch input:checked+.slider{
+background:var(--primary);
+}
+.switch input:checked+.slider:before{
+transform:translateX(16px);
+}
+.summary{
+padding:17px;
+}
+.summary-row{
+display:flex;
+justify-content:space-between;
+padding:9px 0;
+font-size:12px;
+}
+.summary-row strong{font-size:13px}
+.note{
+margin-top:12px;
+padding:12px;
+border-radius:8px;
+background:var(--soft);
+font-size:11px;
+color:var(--primary);
+line-height:1.5;
+}
+.mobile{display:none}
+@media(max-width:800px){
+.sidebar{display:none}
+.main{
+margin-left:0;
+padding:20px 14px 85px;
+}
+.grid{
+grid-template-columns:1fr;
+}
+.top{
+display:block;
+}
+.actions{
+margin-top:15px;
+}
+.actions .btn{
+flex:1;
+}
+.tier-row{
+grid-template-columns:1fr 1fr;
+}
+.remove{
+grid-column:2;
+justify-self:end;
+}
+.mobile{
+position:fixed;
+display:flex;
+left:0;
+right:0;
+bottom:0;
+height:64px;
+background:var(--card);
+border-top:1px solid var(--border);
+z-index:30;
+justify-content:space-around;
+}
+.mobile button{
+border:0;
+background:transparent;
+color:var(--muted);
+font-size:10px;
+}
+.mobile .active{
+color:var(--primary);
+font-weight:bold;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="brand">
+<div class="logo">BF</div>
+<div>B2B Wholesale Pricing <span>Fast</span></div>
+</div>
+
+<div class="right">
+<button class="icon" id="theme" onclick="toggleTheme()">☾</button>
+<button class="icon">🔔</button>
+<div class="store">
+<span>My Store</span>
+<div class="avatar">M</div>
+</div>
+</div>
+
+</header>
+
+<aside class="sidebar">
+
+<div class="label">OVERVIEW</div>
+<button class="nav" onclick="location.href='index.html'">
+⌂ &nbsp; Dashboard
+</button>
+
+<div class="label">COMMERCE</div>
+<button class="nav" onclick="location.href='index.html'">
+◇ &nbsp; Pricing Rules
+</button>
+<button class="nav" onclick="location.href='customers.html'">
+♙ &nbsp; Customer Groups
+</button>
+<button class="nav" onclick="location.href='products.html'">
+▣ &nbsp; Products
+</button>
+<button class="nav active">
+▤ &nbsp; Price Lists
+</button>
+
+<div class="label">INSIGHTS</div>
+<button class="nav">◒ &nbsp; Analytics</button>
+
+<div class="label">SYSTEM</div>
+<button class="nav">⚙ &nbsp; Settings</button>
+
+</aside>
+
+<main class="main">
+
+<div class="container">
+
+<div class="top">
+
+<div>
+
+<div class="back" onclick="location.href='pricelists.html'">
+← Back to price lists
+</div>
+
+<h1 id="title">Wholesale Tier 1</h1>
+
+<div class="subtitle" id="subtitle">
+Configure products and quantity-based pricing.
+</div>
+
+</div>
+
+<div class="actions">
+
+<button class="btn" onclick="location.href='pricelists.html'">
+Cancel
+</button>
+
+<button class="btn primary" onclick="saveAll()">
+Save changes
+</button>
+
+</div>
+
+</div>
+
+
+<div class="grid">
+
+<div>
+
+<div class="panel">
+
+<div class="panel-head">
+
+<div class="panel-title">
+Quantity pricing tiers
+</div>
+
+<div class="panel-sub">
+Set the price a B2B customer pays at each quantity level.
+</div>
+
+</div>
+
+<div id="tiers"></div>
+
+<div style="padding:15px">
+<button class="btn" onclick="addTier()">
++ Add pricing tier
+</button>
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<div class="panel-head">
+
+<div class="panel-title">
+Products
+</div>
+
+<div class="panel-sub">
+Choose products included in this price list.
+</div>
+
+</div>
+
+<div id="products"></div>
+
+</div>
+
+</div>
+
+
+<div>
+
+<div class="panel">
+
+<div class="panel-head">
+
+<div class="panel-title">
+Price list summary
+</div>
+
+</div>
+
+<div class="summary">
+
+<div class="summary-row">
+<span>Customer group</span>
+<strong id="group">wholesale</strong>
+</div>
+
+<div class="summary-row">
+<span>Products</span>
+<strong id="productCount">0</strong>
+</div>
+
+<div class="summary-row">
+<span>Pricing tiers</span>
+<strong id="tierCount">0</strong>
+</div>
+
+<div class="summary-row">
+<span>Status</span>
+<strong style="color:var(--primary)">
+Active
+</strong>
+</div>
+
+<div class="note">
+Wholesale pricing is applied only when the buyer belongs to the selected customer group.
+</div>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<div class="panel-head">
+
+<div class="panel-title">
+Example calculation
+</div>
+
+<div class="panel-sub">
+How the pricing engine will work.
+</div>
+
+</div>
+
+<div class="summary">
+
+<div class="summary-row">
+<span>1–49 units</span>
+<strong>$20.00</strong>
+</div>
+
+<div class="summary-row">
+<span>50–199 units</span>
+<strong>$14.50</strong>
+</div>
+
+<div class="summary-row">
+<span>200+ units</span>
+<strong>$9.00</strong>
+</div>
+
+<div class="note">
+The Shopify Function will calculate the correct tier during checkout.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<nav class="mobile">
+
+<button onclick="location.href='index.html'">
+⌂<br>Home
+</button>
+
+<button onclick="location.href='index.html'">
+◇<br>Pricing
+</button>
+
+<button onclick="location.href='customers.html'">
+♙<br>Customers
+</button>
+
+<button class="active">
+▤<br>Lists
+</button>
+
+<button>⚙<br>Settings</button>
+
+</nav>
+
+
+<script>
+
+let tiers=[
+{min:1,max:49,price:20},
+{min:50,max:199,price:14.50},
+{min:200,max:"",price:9}
+];
+
+let products=[
+{
+id:1,
+name:"Classic Cotton T-Shirt",
+sku:"TSH-001",
+price:20,
+enabled:true
+},
+{
+id:2,
+name:"Premium Hoodie",
+sku:"HOD-104",
+price:45,
+enabled:true
+},
+{
+id:3,
+name:"Business Polo Shirt",
+sku:"POL-220",
+price:32,
+enabled:false
+},
+{
+id:4,
+name:"Classic Baseball Cap",
+sku:"CAP-041",
+price:18,
+enabled:false
+},
+{
+id:5,
+name:"Leather Business Bag",
+sku:"BAG-510",
+price:89,
+enabled:false
+}
+];
+
+
+function renderTiers(){
+
+document.getElementById("tiers").innerHTML=
+tiers.map((tier,index)=>`
+
+<div class="tier">
+
+<div class="tier-row">
+
+<div class="field">
+<label>Minimum quantity</label>
+<input
+type="number"
+min="1"
+value="${tier.min}"
+oninput="tiers[${index}].min=this.value">
+</div>
+
+<div class="field">
+<label>Maximum quantity</label>
+<input
+type="number"
+min="1"
+placeholder="Unlimited"
+value="${tier.max}"
+oninput="tiers[${index}].max=this.value">
+</div>
+
+<div class="field">
+<label>Wholesale price</label>
+<input
+type="number"
+min="0"
+step="0.01"
+value="${tier.price}"
+oninput="tiers[${index}].price=this.value">
+</div>
+
+<button
+class="remove"
+onclick="removeTier(${index})">
+×
+</button>
+
+</div>
+
+</div>
+
+`).join("");
+
+document.getElementById("tierCount")
+.textContent=tiers.length;
+
+}
+
+
+function renderProducts(){
+
+document.getElementById("products").innerHTML=
+products.map(product=>`
+
+<div class="product">
+
+<div class="product-icon">
+📦
+</div>
+
+<div class="product-info">
+
+<div class="product-name">
+${escapeText(product.name)}
+</div>
+
+<div class="product-meta">
+${escapeText(product.sku)}
+&nbsp; • &nbsp;
+Retail $${product.price.toFixed(2)}
+</div>
+
+</div>
+
+<input
+class="price-input"
+type="number"
+step="0.01"
+min="0"
+value="${product.price}"
+oninput="product.price=this.value">
+
+<label class="switch">
+
+<input
+type="checkbox"
+${product.enabled?"checked":""}
+onchange="toggleProduct(${product.id},this.checked)">
+
+<span class="slider"></span>
+
+</label>
+
+</div>
+
+`).join("");
+
+document.getElementById("productCount")
+.textContent=
+products.filter(p=>p.enabled).length;
+
+}
+
+
+function addTier(){
+
+tiers.push({
+min:"",
+max:"",
+price:""
+});
+
+renderTiers();
+
+}
+
+
+function removeTier(index){
+
+if(tiers.length===1){
+
+alert("You need at least one pricing tier.");
+
+return;
+
+}
+
+tiers.splice(index,1);
+
+renderTiers();
+
+}
+
+
+function toggleProduct(id,value){
+
+const product=
+products.find(p=>p.id===id);
+
+if(product){
+product.enabled=value;
+}
+
+document.getElementById("productCount")
+.textContent=
+products.filter(p=>p.enabled).length;
+
+}
+
+
+function saveAll(){
+
+const invalid=
+tiers.some(t=>
+t.min==="" ||
+t.price==="" ||
+Number(t.price)<0
+);
+
+if(invalid){
+
+alert("Please complete all pricing tiers.");
+
+return;
+
+}
+
+localStorage.setItem(
+"b2b_current_price_list",
+JSON.stringify({
+tiers:tiers,
+products:products
+})
+);
+
+alert("Price list saved successfully.");
+
+}
+
+
+function escapeText(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function toggleTheme(){
+
+const html=document.documentElement;
+
+const dark=
+html.getAttribute("data-theme")==="dark";
+
+if(dark){
+
+html.removeAttribute("data-theme");
+localStorage.setItem("b2b_theme","light");
+document.getElementById("theme").textContent="☾";
+
+}else{
+
+html.setAttribute("data-theme","dark");
+localStorage.setItem("b2b_theme","dark");
+document.getElementById("theme").textContent="☀";
+
+}
+
+}
+
+
+if(localStorage.getItem("b2b_theme")==="dark"){
+
+document.documentElement
+.setAttribute("data-theme","dark");
+
+document.getElementById("theme")
+.textContent="☀";
+
+}
+
+renderTiers();
+renderProducts();
+
+</script>
+
+</body>
+</html>

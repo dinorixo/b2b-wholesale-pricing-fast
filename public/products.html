@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B2B Wholesale Pricing Fast — Products</title>
+
+<style>
+:root{
+--bg:#f6f7f8;--card:#fff;--text:#202223;--muted:#6d7175;
+--border:#e1e3e5;--primary:#008060;--soft:#e7f5ef;--danger:#d72c0d;
+}
+[data-theme="dark"]{
+--bg:#101312;--card:#181c1a;--text:#f1f3f2;--muted:#a6ada9;
+--border:#303633;--primary:#35b98a;--soft:#17382d;--danger:#ff6b52;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+button,input,select{font:inherit}
+
+.header{
+height:64px;background:var(--card);border-bottom:1px solid var(--border);
+display:flex;align-items:center;justify-content:space-between;
+padding:0 18px;position:sticky;top:0;z-index:20
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.logo{
+width:36px;height:36px;border-radius:9px;background:var(--primary);
+color:#fff;display:grid;place-items:center;font-weight:800
+}
+.brand span{color:var(--primary)}
+.right{display:flex;align-items:center;gap:7px}
+.icon{
+width:38px;height:38px;border:0;background:transparent;
+color:var(--text);border-radius:8px;cursor:pointer
+}
+.store{
+border:1px solid var(--border);background:var(--card);color:var(--text);
+border-radius:9px;padding:4px 7px 4px 12px;
+display:flex;align-items:center;gap:8px
+}
+.avatar{
+width:30px;height:30px;border-radius:8px;background:var(--primary);
+color:#fff;display:grid;place-items:center;font-weight:bold
+}
+
+.sidebar{
+width:230px;position:fixed;top:64px;bottom:0;background:var(--card);
+border-right:1px solid var(--border);padding:18px 12px
+}
+.label{
+font-size:10px;font-weight:bold;letter-spacing:1px;color:var(--muted);
+padding:12px 10px 7px
+}
+.nav{
+width:100%;border:0;background:transparent;color:var(--muted);
+text-align:left;padding:10px;border-radius:8px;cursor:pointer;margin-bottom:3px
+}
+.nav.active{background:var(--soft);color:var(--primary);font-weight:bold}
+
+.main{margin-left:230px;padding:28px}
+.container{max-width:1100px;margin:auto}
+
+.top{
+display:flex;justify-content:space-between;align-items:end;
+gap:15px;margin-bottom:24px
+}
+.eyebrow{
+font-size:10px;font-weight:bold;letter-spacing:1px;
+color:var(--primary);margin-bottom:7px
+}
+h1{margin:0;font-size:28px}
+.subtitle{margin-top:7px;font-size:13px;color:var(--muted)}
+
+.btn{
+border:1px solid var(--border);background:var(--card);color:var(--text);
+padding:10px 14px;border-radius:8px;font-weight:bold;cursor:pointer
+}
+.primary{background:var(--primary);border-color:var(--primary);color:#fff}
+
+.panel{
+background:var(--card);border:1px solid var(--border);
+border-radius:11px;overflow:hidden
+}
+
+.toolbar{
+padding:14px 16px;border-bottom:1px solid var(--border);
+display:flex;gap:10px;align-items:center
+}
+.search{flex:1}
+.search input{
+width:100%;padding:10px 12px;border:1px solid var(--border);
+border-radius:8px;background:var(--card);color:var(--text);outline:none
+}
+
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:700px}
+th{
+text-align:left;font-size:10px;color:var(--muted);letter-spacing:.5px;
+padding:12px 16px;border-bottom:1px solid var(--border)
+}
+td{
+padding:14px 16px;border-bottom:1px solid var(--border);font-size:12px
+}
+tr:last-child td{border-bottom:0}
+
+.product{
+display:flex;align-items:center;gap:10px
+}
+.product-img{
+width:42px;height:42px;border-radius:8px;background:var(--soft);
+display:grid;place-items:center;color:var(--primary);font-weight:bold
+}
+.product-name{font-weight:bold}
+.product-id{font-size:10px;color:var(--muted);margin-top:3px}
+
+.badge{
+display:inline-block;padding:5px 8px;border-radius:20px;
+background:var(--soft);color:var(--primary);font-size:10px;font-weight:bold
+}
+.price{font-weight:bold}
+.muted{color:var(--muted)}
+
+.actions{display:flex;gap:6px}
+.small{
+border:1px solid var(--border);background:var(--card);color:var(--text);
+padding:7px 9px;border-radius:7px;cursor:pointer;font-size:11px
+}
+
+.modal-bg{
+display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);
+z-index:100;padding:20px
+}
+.modal{
+max-width:500px;margin:60px auto;background:var(--card);
+border-radius:12px;border:1px solid var(--border);
+box-shadow:0 20px 50px rgba(0,0,0,.2)
+}
+.modal-head{
+padding:18px;border-bottom:1px solid var(--border);
+display:flex;justify-content:space-between
+}
+.modal-body{padding:18px}
+.modal-foot{
+padding:14px 18px;border-top:1px solid var(--border);
+display:flex;justify-content:flex-end;gap:8px
+}
+.close{
+border:0;background:transparent;color:var(--muted);
+font-size:20px;cursor:pointer
+}
+.field{margin-bottom:15px}
+.field label{
+display:block;font-size:10px;font-weight:bold;
+color:var(--muted);margin-bottom:7px
+}
+.field input,.field select{
+width:100%;padding:11px;border:1px solid var(--border);
+border-radius:7px;background:var(--card);color:var(--text);outline:none
+}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+.empty{
+padding:45px;text-align:center;color:var(--muted);font-size:12px
+}
+
+.mobile{display:none}
+
+@media(max-width:800px){
+.sidebar{display:none}
+.main{margin-left:0;padding:20px 14px 85px}
+.top{display:block}
+.top .btn{width:100%;margin-top:15px}
+.toolbar{flex-direction:column;align-items:stretch}
+}
+@media(max-width:500px){
+.row{grid-template-columns:1fr}
+.brand{font-size:12px}
+.store span{display:none}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+<div class="brand">
+<div class="logo">BF</div>
+<div>B2B Wholesale Pricing <span>Fast</span></div>
+</div>
+
+<div class="right">
+<button class="icon" id="theme" onclick="toggleTheme()">☾</button>
+<button class="icon">🔔</button>
+<div class="store">
+<span>My Store</span>
+<div class="avatar">M</div>
+</div>
+</div>
+
+</header>
+
+
+<aside class="sidebar">
+
+<div class="label">OVERVIEW</div>
+
+<button class="nav" onclick="location.href='index.html'">
+⌂ &nbsp; Dashboard
+</button>
+
+<div class="label">COMMERCE</div>
+
+<button class="nav" onclick="location.href='rules.html'">
+◇ &nbsp; Pricing Rules
+</button>
+
+<button class="nav" onclick="location.href='customers.html'">
+♙ &nbsp; Customer Groups
+</button>
+
+<button class="nav active">
+▣ &nbsp; Products
+</button>
+
+<button class="nav" onclick="location.href='pricelists.html'">
+▤ &nbsp; Price Lists
+</button>
+
+<button class="nav" onclick="location.href='moq.html'">
+⊙ &nbsp; MOQ & Checkout
+</button>
+
+<div class="label">INSIGHTS</div>
+<button class="nav">◒ &nbsp; Analytics</button>
+
+<div class="label">SYSTEM</div>
+<button class="nav">⚙ &nbsp; Settings</button>
+
+</aside>
+
+
+<main class="main">
+
+<div class="container">
+
+<div class="top">
+
+<div>
+<div class="eyebrow">CATALOG</div>
+<h1>Products</h1>
+<div class="subtitle">
+Configure wholesale pricing for individual products.
+</div>
+</div>
+
+<button class="btn primary" onclick="openModal()">
++ Add product
+</button>
+
+</div>
+
+
+<div class="panel">
+
+<div class="toolbar">
+
+<div class="search">
+<input
+id="search"
+placeholder="Search products..."
+oninput="render()">
+</div>
+
+<select id="filter" class="btn" onchange="render()">
+<option value="all">All products</option>
+<option value="configured">Configured</option>
+<option value="unconfigured">Not configured</option>
+</select>
+
+</div>
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>PRODUCT</th>
+<th>RETAIL PRICE</th>
+<th>WHOLESALE PRICE</th>
+<th>MOQ</th>
+<th>STATUS</th>
+<th></th>
+</tr>
+</thead>
+
+<tbody id="products"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+
+<div class="modal-bg" id="modal">
+
+<div class="modal">
+
+<div class="modal-head">
+<strong>Configure product</strong>
+<button class="close" onclick="closeModal()">×</button>
+</div>
+
+<div class="modal-body">
+
+<div class="field">
+<label>PRODUCT NAME</label>
+<input id="name" placeholder="Example: Business Polo Shirt">
+</div>
+
+<div class="row">
+
+<div class="field">
+<label>RETAIL PRICE</label>
+<input id="retail" type="number" step="0.01" placeholder="20">
+</div>
+
+<div class="field">
+<label>WHOLESALE PRICE</label>
+<input id="wholesale" type="number" step="0.01" placeholder="14.50">
+</div>
+
+</div>
+
+<div class="field">
+<label>MINIMUM ORDER QUANTITY</label>
+<input id="moq" type="number" min="1" value="50">
+</div>
+
+</div>
+
+<div class="modal-foot">
+
+<button class="btn" onclick="closeModal()">Cancel</button>
+
+<button class="btn primary" onclick="createProduct()">
+Save product
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<nav class="mobile">
+
+<button onclick="location.href='index.html'">⌂<br>Home</button>
+<button onclick="location.href='rules.html'">◇<br>Pricing</button>
+<button onclick="location.href='customers.html'">♙<br>Customers</button>
+<button class="active">▣<br>Products</button>
+<button>⚙<br>Settings</button>
+
+</nav>
+
+
+<script>
+
+const defaults=[
+{
+id:1,
+name:"Business Polo Shirt",
+retail:20,
+wholesale:14.5,
+moq:50,
+configured:true
+},
+{
+id:2,
+name:"Classic Cotton T-Shirt",
+retail:15,
+wholesale:10,
+moq:100,
+configured:true
+},
+{
+id:3,
+name:"Premium Hoodie",
+retail:45,
+wholesale:32,
+moq:25,
+configured:false
+}
+];
+
+let products=JSON.parse(
+localStorage.getItem("b2b_products")
+||JSON.stringify(defaults)
+);
+
+
+function render(){
+
+const query=
+document.getElementById("search").value.toLowerCase();
+
+const filter=
+document.getElementById("filter").value;
+
+const list=products.filter(p=>{
+
+const matchesSearch=
+p.name.toLowerCase().includes(query);
+
+const matchesFilter=
+filter==="all" ||
+(filter==="configured" && p.configured) ||
+(filter==="unconfigured" && !p.configured);
+
+return matchesSearch && matchesFilter;
+
+});
+
+const tbody=document.getElementById("products");
+
+if(!list.length){
+
+tbody.innerHTML=`
+<tr>
+<td colspan="6">
+<div class="empty">No products found.</div>
+</td>
+</tr>`;
+
+return;
+}
+
+tbody.innerHTML=list.map(p=>`
+
+<tr>
+
+<td>
+
+<div class="product">
+
+<div class="product-img">
+${escapeText(p.name.charAt(0).toUpperCase())}
+</div>
+
+<div>
+<div class="product-name">
+${escapeText(p.name)}
+</div>
+
+<div class="product-id">
+Product #${p.id}
+</div>
+</div>
+
+</div>
+
+</td>
+
+<td class="price">
+$${Number(p.retail).toFixed(2)}
+</td>
+
+<td class="price">
+${p.configured
+?"$"+Number(p.wholesale).toFixed(2)
+:"—"}
+</td>
+
+<td>
+${p.configured?p.moq+" units":"—"}
+</td>
+
+<td>
+
+<span class="badge">
+${p.configured?"Configured":"Not configured"}
+</span>
+
+</td>
+
+<td>
+
+<div class="actions">
+
+<button class="small"
+onclick="editProduct(${p.id})">
+Edit
+</button>
+
+<button class="small"
+onclick="deleteProduct(${p.id})">
+Delete
+</button>
+
+</div>
+
+</td>
+
+</tr>
+
+`).join("");
+
+}
+
+
+function openModal(product=null){
+
+document.getElementById("modal").style.display="block";
+
+if(product){
+
+document.getElementById("name").value=product.name;
+document.getElementById("retail").value=product.retail;
+document.getElementById("wholesale").value=product.wholesale;
+document.getElementById("moq").value=product.moq;
+
+}else{
+
+document.getElementById("name").value="";
+document.getElementById("retail").value="";
+document.getElementById("wholesale").value="";
+document.getElementById("moq").value=50;
+
+}
+
+}
+
+
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+
+let editingId=null;
+
+
+function createProduct(){
+
+const name=document.getElementById("name").value.trim();
+
+const retail=Number(document.getElementById("retail").value);
+
+const wholesale=Number(document.getElementById("wholesale").value);
+
+const moq=Number(document.getElementById("moq").value);
+
+if(!name || retail<=0 || wholesale<=0 || moq<=0){
+
+alert("Please enter valid product details.");
+
+return;
+
+}
+
+if(editingId){
+
+const product=products.find(p=>p.id===editingId);
+
+if(product){
+
+product.name=name;
+product.retail=retail;
+product.wholesale=wholesale;
+product.moq=moq;
+product.configured=true;
+
+}
+
+editingId=null;
+
+}else{
+
+products.push({
+id:Date.now(),
+name:name,
+retail:retail,
+wholesale:wholesale,
+moq:moq,
+configured:true
+});
+
+}
+
+save();
+render();
+closeModal();
+
+}
+
+
+function editProduct(id){
+
+const product=products.find(p=>p.id===id);
+
+if(!product)return;
+
+editingId=id;
+openModal(product);
+
+}
+
+
+function deleteProduct(id){
+
+if(!confirm("Delete this product configuration?"))return;
+
+products=products.filter(p=>p.id!==id);
+
+save();
+render();
+
+}
+
+
+function save(){
+
+localStorage.setItem(
+"b2b_products",
+JSON.stringify(products)
+);
+
+}
+
+
+function escapeText(value){
+
+return String(value)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+function toggleTheme(){
+
+const html=document.documentElement;
+
+const dark=html.getAttribute("data-theme")==="dark";
+
+if(dark){
+
+html.removeAttribute("data-theme");
+localStorage.setItem("b2b_theme","light");
+document.getElementById("theme").textContent="☾";
+
+}else{
+
+html.setAttribute("data-theme","dark");
+localStorage.setItem("b2b_theme","dark");
+document.getElementById("theme").textContent="☀";
+
+}
+
+}
+
+
+if(localStorage.getItem("b2b_theme")==="dark"){
+
+document.documentElement.setAttribute("data-theme","dark");
+document.getElementById("theme").textContent="☀";
+
+}
+
+render();
+
+</script>
+
+</body>
+</html>

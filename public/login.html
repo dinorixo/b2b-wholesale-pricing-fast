@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>B2B Wholesale Pricing Fast — Account</title>
+
+<style>
+:root{
+--bg:#f6f7f8;
+--card:#fff;
+--text:#202223;
+--muted:#6d7175;
+--border:#e1e3e5;
+--primary:#008060;
+--soft:#e7f5ef;
+--danger:#d72c0d
+}
+
+[data-theme="dark"]{
+--bg:#101312;
+--card:#181c1a;
+--text:#f1f3f2;
+--muted:#a6ada9;
+--border:#303633;
+--primary:#35b98a;
+--soft:#17382d;
+--danger:#ff6b52
+}
+
+*{box-sizing:border-box}
+
+body{
+margin:0;
+min-height:100vh;
+background:var(--bg);
+color:var(--text);
+font-family:Arial,sans-serif;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px
+}
+
+.card{
+width:100%;
+max-width:430px;
+background:var(--card);
+border:1px solid var(--border);
+border-radius:16px;
+padding:30px;
+box-shadow:0 10px 35px rgba(0,0,0,.06)
+}
+
+.logo{
+width:48px;
+height:48px;
+border-radius:12px;
+background:var(--primary);
+color:#fff;
+display:grid;
+place-items:center;
+font-weight:800;
+margin-bottom:18px
+}
+
+h1{
+font-size:25px;
+margin:0
+}
+
+.subtitle{
+font-size:13px;
+color:var(--muted);
+margin-top:8px;
+line-height:1.5
+}
+
+.tabs{
+display:grid;
+grid-template-columns:1fr 1fr;
+margin:25px 0 20px;
+background:var(--bg);
+padding:4px;
+border-radius:9px
+}
+
+.tab{
+border:0;
+background:transparent;
+color:var(--muted);
+padding:10px;
+border-radius:7px;
+cursor:pointer;
+font-weight:bold
+}
+
+.tab.active{
+background:var(--card);
+color:var(--text);
+box-shadow:0 1px 5px rgba(0,0,0,.08)
+}
+
+.field{
+margin-bottom:15px
+}
+
+label{
+display:block;
+font-size:11px;
+font-weight:bold;
+color:var(--muted);
+margin-bottom:7px
+}
+
+input{
+width:100%;
+padding:12px;
+border:1px solid var(--border);
+border-radius:8px;
+background:var(--card);
+color:var(--text);
+outline:none;
+font-size:14px
+}
+
+input:focus{
+border-color:var(--primary)
+}
+
+.button{
+width:100%;
+padding:13px;
+border:0;
+border-radius:8px;
+background:var(--primary);
+color:#fff;
+font-weight:bold;
+cursor:pointer;
+margin-top:5px
+}
+
+.button:disabled{
+opacity:.6;
+cursor:not-allowed
+}
+
+.message{
+display:none;
+margin-bottom:15px;
+padding:11px;
+border-radius:8px;
+font-size:12px;
+line-height:1.4
+}
+
+.message.error{
+display:block;
+background:#fff0ed;
+color:var(--danger)
+}
+
+.message.success{
+display:block;
+background:var(--soft);
+color:var(--primary)
+}
+
+.trial{
+margin-top:18px;
+padding:13px;
+background:var(--soft);
+border-radius:9px;
+font-size:11px;
+line-height:1.5
+}
+
+.theme{
+position:fixed;
+right:18px;
+top:18px;
+width:40px;
+height:40px;
+border:1px solid var(--border);
+border-radius:9px;
+background:var(--card);
+color:var(--text);
+cursor:pointer
+}
+
+.small{
+font-size:10px;
+color:var(--muted);
+text-align:center;
+margin-top:20px
+}
+</style>
+</head>
+
+<body>
+
+<button class="theme" id="theme" onclick="toggleTheme()">☾</button>
+
+<div class="card">
+
+<div class="logo">BF</div>
+
+<h1 id="title">Welcome back</h1>
+
+<div class="subtitle" id="subtitle">
+Sign in to manage your wholesale pricing.
+</div>
+
+
+<div class="tabs">
+
+<button
+class="tab active"
+id="loginTab"
+onclick="showLogin()">
+Login
+</button>
+
+<button
+class="tab"
+id="registerTab"
+onclick="showRegister()">
+Create account
+</button>
+
+</div>
+
+
+<div id="message" class="message"></div>
+
+
+<form id="authForm">
+
+<div class="field">
+
+<label>EMAIL</label>
+
+<input
+id="email"
+type="email"
+placeholder="you@company.com"
+autocomplete="email"
+required>
+
+</div>
+
+
+<div class="field">
+
+<label>PASSWORD</label>
+
+<input
+id="password"
+type="password"
+placeholder="Minimum 8 characters"
+autocomplete="current-password"
+required>
+
+</div>
+
+
+<button
+class="button"
+id="submit"
+type="submit">
+Sign in
+</button>
+
+</form>
+
+
+<div class="trial">
+
+<strong>14-day Premium trial</strong><br>
+
+Start with full access to the wholesale pricing engine.
+No payment is required during the trial.
+
+</div>
+
+
+<div class="small">
+B2B Wholesale Pricing Fast
+</div>
+
+</div>
+
+
+<script>
+
+let mode="login";
+
+
+function showMessage(text,type){
+
+const box=document.getElementById("message");
+
+box.textContent=text;
+
+box.className="message "+type;
+
+}
+
+
+function showLogin(){
+
+mode="login";
+
+document.getElementById("title").textContent=
+"Welcome back";
+
+document.getElementById("subtitle").textContent=
+"Sign in to manage your wholesale pricing.";
+
+document.getElementById("submit").textContent=
+"Sign in";
+
+document.getElementById("password").autocomplete=
+"current-password";
+
+document.getElementById("loginTab").classList.add("active");
+
+document.getElementById("registerTab").classList.remove("active");
+
+showMessage("","");
+
+}
+
+
+function showRegister(){
+
+mode="register";
+
+document.getElementById("title").textContent=
+"Create your account";
+
+document.getElementById("subtitle").textContent=
+"Start your 14-day Premium trial.";
+
+document.getElementById("submit").textContent=
+"Create account";
+
+document.getElementById("password").autocomplete=
+"new-password";
+
+document.getElementById("registerTab").classList.add("active");
+
+document.getElementById("loginTab").classList.remove("active");
+
+showMessage("","");
+
+}
+
+
+document.getElementById("authForm").addEventListener(
+"submit",
+async function(event){
+
+event.preventDefault();
+
+const button=
+document.getElementById("submit");
+
+const email=
+document.getElementById("email").value.trim();
+
+const password=
+document.getElementById("password").value;
+
+button.disabled=true;
+
+button.textContent=
+mode==="login"
+?"Signing in..."
+:"Creating account...";
+
+showMessage("","");
+
+
+try{
+
+const endpoint=
+mode==="login"
+?"/api/auth/login"
+:"/api/auth/register";
+
+
+const response=
+await fetch(endpoint,{
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+email,
+password
+})
+
+});
+
+
+const data=await response.json();
+
+
+if(!response.ok){
+
+throw new Error(
+data.error || "Something went wrong"
+);
+
+}
+
+
+localStorage.setItem(
+"b2b_auth_token",
+data.token
+);
+
+
+localStorage.setItem(
+"b2b_user",
+JSON.stringify(data.user)
+);
+
+
+showMessage(
+mode==="login"
+?"Login successful. Opening dashboard..."
+:"Account created. Opening dashboard...",
+"success"
+);
+
+
+setTimeout(()=>{
+
+window.location.href="/";
+
+},700);
+
+
+}catch(error){
+
+showMessage(
+error.message,
+"error"
+);
+
+button.disabled=false;
+
+button.textContent=
+mode==="login"
+?"Sign in"
+:"Create account";
+
+}
+
+});
+
+
+function toggleTheme(){
+
+const html=document.documentElement;
+
+const dark=
+html.getAttribute("data-theme")==="dark";
+
+if(dark){
+
+html.removeAttribute("data-theme");
+
+localStorage.setItem(
+"b2b_theme",
+"light"
+);
+
+document.getElementById("theme").textContent="☾";
+
+}else{
+
+html.setAttribute("data-theme","dark");
+
+localStorage.setItem(
+"b2b_theme",
+"dark"
+);
+
+document.getElementById("theme").textContent="☀";
+
+}
+
+}
+
+
+if(
+localStorage.getItem("b2b_theme")==="dark"
+){
+
+document.documentElement.setAttribute(
+"data-theme",
+"dark"
+);
+
+document.getElementById("theme").textContent="☀";
+
+}
+
+</script>
+
+</body>
+</html>
