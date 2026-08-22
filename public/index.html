@@ -255,10 +255,19 @@ margin-bottom:12px;
 <span>B2B Wholesale Pricing Fast</span>
 </div>
 
+<nav class="top-nav">
+<button class="top-link active" onclick="location.href='/'">Dashboard</button>
+<button class="top-link" onclick="location.href='/products.html'">Pricing Rules</button>
+<button class="top-link" onclick="location.href='/sales.html'">Sales Analytics</button>
+<button class="top-link" onclick="openHelp()">Help</button>
+<button class="top-link" onclick="location.href='/settings.html'">Settings</button>
+</nav>
+
 <div class="top-actions">
-<button class="btn" onclick="openHelp()">Help</button>
-<button class="btn primary" onclick="location.href='/products.html'">
-Pricing Rules
+<button class="icon-btn" onclick="toggleTheme()" title="Toggle theme">◐</button>
+<button class="account-btn" onclick="location.href='/login.html'">
+<span class="account-avatar">A</span>
+Account
 </button>
 </div>
 </header>
