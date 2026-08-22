@@ -1,0 +1,12 @@
+client_id = "132aea681b534c131a728008b3397cc3"
+name = "Wholesale Pricing Fast"
+application_url = "https://b2b-wholesale-pricing-fast.onrender.com"
+embedded = true
+
+[access_scopes]
+scopes = "read_products,read_customers,read_orders"
+
+[auth]
+redirect_urls = [
+  "https://b2b-wholesale-pricing-fast.onrender.com/api/auth/callback"
+]
