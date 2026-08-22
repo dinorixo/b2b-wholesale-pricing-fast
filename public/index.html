@@ -538,7 +538,7 @@ box-shadow:0 3px 12px rgba(0,0,0,.15);
   const token=localStorage.getItem("b2b_session_token");
 
   if(!token){
-    window.location.href="/login.html";
+    console.log("Waiting for Shopify authentication.");
     return;
   }
 
@@ -554,7 +554,7 @@ box-shadow:0 3px 12px rgba(0,0,0,.15);
 
     if(!response.ok || !data.success){
       localStorage.removeItem("b2b_session_token");
-      window.location.href="/login.html";
+      console.log("B2B session unavailable; Shopify authentication will be used.");
       return;
     }
 
@@ -594,6 +594,19 @@ box-shadow:0 3px 12px rgba(0,0,0,.15);
 
   console.log("B2B Shopify authentication ready.");
 })();
+</script>
+
+<script>
+function openAccount(){
+  if(window.currentB2BAccount){
+    alert(
+      "Account: " + window.currentB2BAccount.user.email +
+      "\nStore: " + (window.currentB2BAccount.shop?.shopDomain || "Unknown")
+    );
+  }else{
+    console.log("Shopify account is handled by the embedded app.");
+  }
+}
 </script>
 </body>
 </html>
